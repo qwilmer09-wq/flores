@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-<meta name="viewport"
-content="width=device-width,
-initial-scale=1.0,
-maximum-scale=1.0,
-user-scalable=no">
+<title>🌻 Día de las Flores Amarillas - Mi Amor Eterno 🌻</title>
 
-<title>🌻 Feliz Día de las Flores Amarillas 🌻</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
 
 <style>
 
@@ -19,158 +16,284 @@ user-scalable=no">
     box-sizing:border-box;
     margin:0;
     padding:0;
+    user-select:none;
+    -webkit-user-select:none;
 }
 
-html,body{
-
+html,
+body{
     width:100%;
     height:100%;
-
     overflow:hidden;
-
     background:#000;
-
-    font-family:
-    "Segoe UI",
-    Arial,
-    sans-serif;
-
+    font-family:'Montserrat',sans-serif;
     touch-action:none;
 }
 
-
-/* =====================================================
-   PANTALLA INICIAL
-===================================================== */
+/* =========================================================
+   PORTADA
+========================================================= */
 
 #inicio{
-
     position:fixed;
-
     inset:0;
-
     z-index:1000;
 
     display:flex;
-
     flex-direction:column;
-
     justify-content:center;
-
     align-items:center;
 
     background:
-    radial-gradient(
-        circle,
-        #332000 0%,
-        #080600 45%,
-        #000 100%
-    );
+        radial-gradient(
+            circle at center,
+            #3a2200 0%,
+            #160b00 45%,
+            #000 100%
+        );
 
+    cursor:pointer;
+    transition:
+        opacity .8s ease,
+        visibility .8s ease;
+
+    padding:20px;
 }
 
+#inicio.oculto{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+}
+
+.sobre-wrapper{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+}
 
 .sobre{
-
     font-size:110px;
 
     animation:
-    flotar 2.5s
-    ease-in-out
-    infinite;
+        flotar 2.8s ease-in-out infinite;
 
     filter:
-    drop-shadow(0 0 15px #ffd000)
-    drop-shadow(0 0 40px #ff9d00);
-
+        drop-shadow(0 0 25px #ffd000)
+        drop-shadow(0 0 55px #ff8c00);
 }
-
 
 @keyframes flotar{
 
-    0%,100%{
-        transform:
-        translateY(0)
-        rotate(-3deg);
+    0%,
+    100%{
+        transform:translateY(0) rotate(-3deg);
     }
 
     50%{
-        transform:
-        translateY(-20px)
-        rotate(3deg);
+        transform:translateY(-22px) rotate(3deg);
     }
-
 }
 
+.dedicatoria-tag{
+    font-family:'Great Vibes',cursive;
+    color:#ffe680;
+    font-size:36px;
+    margin-top:5px;
+    margin-bottom:20px;
+
+    text-shadow:
+        0 0 12px rgba(255,215,0,.8);
+
+    text-align:center;
+}
 
 .instruccion{
-
-    margin-top:30px;
-
-    color:white;
-
+    color:#fffbd1;
     font-size:14px;
-
+    font-weight:500;
     letter-spacing:2px;
-
     text-transform:uppercase;
 
-    padding:
-    13px 25px;
+    padding:14px 30px;
 
     border-radius:30px;
 
-    background:
-    rgba(255,255,255,.07);
+    background:rgba(255,210,0,.15);
 
-    border:
-    1px solid
-    rgba(255,210,0,.4);
+    border:1px solid rgba(255,210,0,.6);
 
     box-shadow:
-    0 0 25px
-    rgba(255,200,0,.25);
+        0 0 30px rgba(255,200,0,.4);
 
+    backdrop-filter:blur(8px);
+
+    text-align:center;
 }
 
+/* =========================================================
+   CARTA
+========================================================= */
 
-/* =====================================================
+#modalCarta{
+    position:fixed;
+    inset:0;
+    z-index:1100;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:rgba(0,0,0,.9);
+
+    backdrop-filter:blur(12px);
+
+    opacity:0;
+    pointer-events:none;
+
+    transition:opacity .5s ease;
+
+    padding:20px;
+}
+
+#modalCarta.activo{
+    opacity:1;
+    pointer-events:auto;
+}
+
+.carta-box{
+
+    background:
+        linear-gradient(
+            135deg,
+            #1c1203 0%,
+            #2b1d05 100%
+        );
+
+    border:2px solid #ffd700;
+
+    border-radius:24px;
+
+    max-width:500px;
+    width:100%;
+
+    padding:35px 30px;
+
+    box-shadow:
+        0 0 40px rgba(255,215,0,.4),
+        inset 0 0 15px rgba(255,215,0,.1);
+
+    text-align:center;
+
+    transform:scale(.85);
+
+    transition:
+        transform .5s
+        cubic-bezier(.175,.885,.32,1.275);
+}
+
+#modalCarta.activo .carta-box{
+    transform:scale(1);
+}
+
+.carta-titulo{
+
+    font-family:'Great Vibes',cursive;
+
+    font-size:44px;
+
+    color:#ffe066;
+
+    margin-bottom:15px;
+
+    text-shadow:
+        0 0 10px rgba(255,224,102,.5);
+}
+
+.carta-contenido{
+
+    font-family:'Playfair Display',serif;
+
+    font-size:16px;
+
+    line-height:1.7;
+
+    color:#fff8e7;
+
+    margin-bottom:25px;
+
+    font-style:italic;
+}
+
+.carta-btn{
+
+    font-family:'Montserrat',sans-serif;
+
+    font-weight:600;
+
+    font-size:14px;
+
+    letter-spacing:1.5px;
+
+    text-transform:uppercase;
+
+    background:
+        linear-gradient(
+            45deg,
+            #ffd700,
+            #ff8c00
+        );
+
+    color:#000;
+
+    border:none;
+
+    padding:14px 32px;
+
+    border-radius:25px;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 0 20px rgba(255,215,0,.5);
+}
+
+/* =========================================================
    ESCENA
-===================================================== */
+========================================================= */
 
 #escena{
 
     position:fixed;
-
-    inset:0;
-
-    display:none;
-
-    background:#000;
-
-}
-
-
-canvas{
-
-    position:absolute;
-
     inset:0;
 
     display:block;
 
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:opacity 1s ease;
 }
 
+#escena.activa{
+    opacity:1;
+    pointer-events:auto;
+}
 
-/* =====================================================
-   TITULO
-===================================================== */
+canvas{
+    position:absolute;
+    inset:0;
+    display:block;
+}
 
 .titulo{
 
     position:absolute;
 
-    top:4%;
+    top:3.5%;
 
     left:0;
 
@@ -182,280 +305,744 @@ canvas{
 
     pointer-events:none;
 
-    color:#fffbd1;
+    color:#fff;
 
-    font-weight:900;
+    font-family:'Playfair Display',serif;
 
-    font-size:
-    clamp(
-        27px,
-        7vw,
-        55px
+    font-weight:600;
+
+    font-size:clamp(
+        24px,
+        5.5vw,
+        48px
     );
 
     line-height:1.25;
 
+    letter-spacing:1px;
+
     text-shadow:
-
-    0 0 5px white,
-
-    0 0 12px #ffe100,
-
-    0 0 25px #ffb000,
-
-    0 0 50px #ff8c00;
+        0 0 8px #fff,
+        0 0 18px #ffe100,
+        0 0 30px #ffb000;
 
     animation:
-    brillo 2s
-    infinite
-    alternate;
-
+        brilloGlow 2.5s ease-in-out infinite alternate;
 }
 
-
-@keyframes brillo{
+@keyframes brilloGlow{
 
     from{
-        filter:brightness(.9);
+        filter:
+            brightness(.95)
+            drop-shadow(
+                0 0 10px
+                rgba(255,220,0,.4)
+            );
     }
 
     to{
-        filter:brightness(1.4);
+        filter:
+            brightness(1.35)
+            drop-shadow(
+                0 0 25px
+                rgba(255,200,0,.8)
+            );
     }
-
 }
-
-
-/* =====================================================
-   SUBTITULO
-===================================================== */
 
 .subtitulo{
 
     position:absolute;
 
-    bottom:5%;
+    bottom:3.5%;
 
     width:100%;
 
     text-align:center;
 
     color:
-    rgba(255,255,255,.75);
+        rgba(255,245,200,.85);
 
-    font-size:13px;
+    font-size:12px;
 
-    letter-spacing:1px;
+    letter-spacing:1.5px;
 
     z-index:50;
 
     pointer-events:none;
 
+    text-shadow:
+        0 0 10px rgba(0,0,0,.9);
+
+    padding:0 10px;
 }
 
-
-/* =====================================================
-   BOTON
-===================================================== */
-
-#reiniciar{
-
-    display:none;
+.ui-top-bar{
 
     position:absolute;
 
+    top:20px;
+    right:20px;
+
     z-index:100;
 
-    right:15px;
+    display:flex;
 
-    bottom:15px;
+    align-items:center;
 
-    width:42px;
+    gap:12px;
+}
 
-    height:42px;
+.btn-iconic{
+
+    width:46px;
+    height:46px;
 
     border-radius:50%;
 
     border:
-    1px solid
-    rgba(255,220,0,.5);
+        1px solid
+        rgba(255,220,0,.6);
 
     background:
-    rgba(0,0,0,.5);
+        rgba(15,10,0,.75);
 
     color:#ffd000;
 
     font-size:20px;
 
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    cursor:pointer;
+
+    backdrop-filter:blur(8px);
+
+    box-shadow:
+        0 0 15px
+        rgba(255,200,0,.25);
+}
+
+#reiniciar{
+
+    position:absolute;
+
+    z-index:100;
+
+    right:20px;
+
+    bottom:20px;
+}
+
+/* =========================================================
+   POPUP
+========================================================= */
+
+#popupGirasol{
+
+    position:fixed;
+
+    top:50%;
+    left:50%;
+
+    transform:
+        translate(-50%,-50%)
+        scale(.8);
+
+    z-index:2000;
+
+    background:
+        rgba(20,12,2,.96);
+
+    border:
+        1px solid #ffd700;
+
+    padding:24px 30px;
+
+    border-radius:20px;
+
+    box-shadow:
+        0 0 35px
+        rgba(255,215,0,.6);
+
+    text-align:center;
+
+    backdrop-filter:blur(12px);
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:
+        all .4s
+        cubic-bezier(.175,.885,.32,1.275);
+
+    max-width:330px;
+
+    width:85%;
+}
+
+#popupGirasol.activo{
+
+    opacity:1;
+
+    transform:
+        translate(-50%,-50%)
+        scale(1);
+
+    pointer-events:auto;
+}
+
+.popup-emoji{
+    font-size:40px;
+    margin-bottom:8px;
+}
+
+.popup-texto{
+
+    font-family:'Playfair Display',serif;
+
+    font-size:18px;
+
+    color:#fff5cc;
+
+    line-height:1.4;
+
+    margin-bottom:12px;
+}
+
+.popup-close{
+
+    font-size:11px;
+
+    color:#ffa800;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+}
+
+#toast{
+
+    position:fixed;
+
+    top:80px;
+    left:50%;
+
+    transform:
+        translateX(-50%)
+        translateY(-20px);
+
+    z-index:3000;
+
+    background:
+        rgba(255,215,0,.95);
+
+    color:#000;
+
+    font-weight:600;
+
+    font-size:13px;
+
+    padding:10px 24px;
+
+    border-radius:20px;
+
+    box-shadow:
+        0 0 20px
+        rgba(255,215,0,.5);
+
+    opacity:0;
+
+    transition:all .4s ease;
+
+    pointer-events:none;
+}
+
+#toast.visible{
+
+    opacity:1;
+
+    transform:
+        translateX(-50%)
+        translateY(0);
 }
 
 </style>
-
 </head>
-
 
 <body>
 
-
-<!-- =================================================
-     INICIO
-================================================= -->
+<!-- ======================================================
+     PORTADA
+====================================================== -->
 
 <div id="inicio">
 
-    <div class="sobre">
-        💌
-    </div>
+    <div class="sobre-wrapper">
 
-    <div class="instruccion">
-        Toca para abrir tu sorpresa ✨
+        <div class="sobre">
+            💌
+        </div>
+
+        <div class="dedicatoria-tag">
+            Para Mi Esposa Hermosa
+        </div>
+
+        <div class="instruccion">
+            Toca para abrir tu carta ✨
+        </div>
+
     </div>
 
 </div>
 
 
-<!-- =================================================
-     ESCENA
-================================================= -->
+<!-- ======================================================
+     CARTA
+====================================================== -->
+
+<div id="modalCarta">
+
+    <div class="carta-box">
+
+        <div class="carta-titulo">
+            Mi Amor Eterno ✨
+        </div>
+
+        <div class="carta-contenido">
+
+            "Eres el centro de mi universo y
+            la luz que ilumina cada uno de mis días.
+            En este día de las flores amarillas,
+            quiero regalarte una galaxia entera
+            con ramos de rosas, girasoles y detalles
+            que jamás dejarán de florecer para ti."
+
+        </div>
+
+        <button
+            class="carta-btn"
+            id="btnEntrarUniverso">
+
+            Explorar Nuestro Universo 🌻
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ======================================================
+     ESCENA PRINCIPAL
+====================================================== -->
 
 <div id="escena">
 
-
     <div class="titulo">
 
-        🌻 FELIZ DÍA DE LAS<br>
-        FLORES AMARILLAS 🌻
+        Feliz día de las<br>
+        Flores Amarillas 🌻
 
     </div>
 
+    <div class="ui-top-bar">
+
+        <button
+            class="btn-iconic"
+            id="btnCompartir"
+            title="Enviar a WhatsApp">
+
+            💬
+
+        </button>
+
+    </div>
 
     <div class="subtitulo">
 
-        👆 Arrastra para girar · 🤏 Acerca o aleja
+        ✨ Toca las flores y ramos para ver mensajes
+        · Arrastra para explorar · Usa la rueda para Zoom
 
     </div>
-
 
 </div>
 
 
-<button id="reiniciar">
-↻
+<button
+    class="btn-iconic"
+    id="reiniciar"
+    title="Reiniciar vista">
+
+    ↻
+
 </button>
 
 
-<!-- =================================================
-     THREE JS
-================================================= -->
+<!-- ======================================================
+     POPUP
+====================================================== -->
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js">
-</script>
+<div id="popupGirasol">
+
+    <div
+        class="popup-emoji"
+        id="popupEmoji">
+
+        🌻
+
+    </div>
+
+    <div
+        class="popup-texto"
+        id="popupTextoMsg">
+
+        Eres mi lugar favorito en el mundo.
+
+    </div>
+
+    <div class="popup-close">
+
+        Toca para cerrar
+
+    </div>
+
+</div>
+
+
+<div id="toast">
+
+    ¡Mensaje copiado para enviar a tu esposa! 💌
+
+</div>
+
+
+<!-- THREE.JS -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 
 <script>
 
-
-/* =====================================================
-   VARIABLES
-===================================================== */
+/* =========================================================
+   VARIABLES PRINCIPALES
+========================================================= */
 
 let scene;
-
 let camera;
-
 let renderer;
 
 let universo;
+let saturnoGrupo;
 
-let flores=[];
+let elementosFlorales = [];
 
-let mensajes=[];
+let estrellasPuntos;
+let petalosSistema;
 
-let estrellas;
+let raycaster;
+let mouse;
 
-let autoRotacion=true;
-
-let arrastrando=false;
-
-let anteriorX=0;
-
-let anteriorY=0;
-
-let distanciaInicial=0;
-
-let zoomInicial=10;
+let escenaIniciada = false;
 
 
-/* =====================================================
-   ELEMENTOS
-===================================================== */
+/* =========================================================
+   MENSAJES
+========================================================= */
 
-const inicio=
-document.getElementById("inicio");
+const FRASES_FLORALES = [
 
-const pantalla=
-document.getElementById("escena");
+    {
+        txt:"Eres mi sol en los días nublados ☀️",
+        emoji:"🌻"
+    },
 
-const boton=
-document.getElementById("reiniciar");
+    {
+        txt:"Te elegiría a ti en mil vidas más 💍",
+        emoji:"💐"
+    },
+
+    {
+        txt:"Gracias por hacer de mi vida un lugar hermoso 💛",
+        emoji:"🌹"
+    },
+
+    {
+        txt:"Tu sonrisa es mi parte favorita del día 😊",
+        emoji:"🌻"
+    },
+
+    {
+        txt:"Mi amor por ti es infinito como el universo ✨",
+        emoji:"💐"
+    },
+
+    {
+        txt:"Eres el regalo más bonito de mi vida 🎁",
+        emoji:"🌹"
+    },
+
+    {
+        txt:"Contigo todo es más dulce y especial 🍯",
+        emoji:"🌻"
+    },
+
+    {
+        txt:"Florezco cada día gracias a tu amor 🌻",
+        emoji:"💐"
+    },
+
+    {
+        txt:"Amo cada detalle de ti, mi vida ❤️",
+        emoji:"🌹"
+    },
+
+    {
+        txt:"Eres mi hogar y mi lugar favorito 🏡",
+        emoji:"🌻"
+    },
+
+    {
+        txt:"Mi corazón siempre baila al ritmo de tu amor 💃",
+        emoji:"🌹"
+    }
+
+];
 
 
-/* =====================================================
-   ABRIR
-===================================================== */
+const FRASES_ORBITA = [
 
-inicio.addEventListener(
-    "click",
-    iniciar
-);
+    "Pura luz ✨",
+    "Sonríe siempre 🌻",
+    "Solo para ti 💛",
+    "Flores eternas 💐",
+    "Luz en mi vida",
+    "Eres mi universo 🌌",
+    "Te amo con toda mi alma 💍",
+    "Mi persona favorita 👩‍❤️‍👨",
+    "Brilla siempre ✨",
+    "Eres mi amor eterno ❤️"
+
+];
 
 
-function iniciar(){
+/* =========================================================
+   ELEMENTOS HTML
+========================================================= */
 
-    inicio.style.display="none";
+const inicioEl =
+    document.getElementById("inicio");
 
-    pantalla.style.display="block";
+const modalCartaEl =
+    document.getElementById("modalCarta");
 
-    boton.style.display="block";
+const btnEntrarEl =
+    document.getElementById("btnEntrarUniverso");
 
-    crearEscena();
+const escenaEl =
+    document.getElementById("escena");
+
+const btnCompartirEl =
+    document.getElementById("btnCompartir");
+
+const popupGirasolEl =
+    document.getElementById("popupGirasol");
+
+const popupTextoEl =
+    document.getElementById("popupTextoMsg");
+
+const popupEmojiEl =
+    document.getElementById("popupEmoji");
+
+const toastEl =
+    document.getElementById("toast");
+
+const btnReiniciarEl =
+    document.getElementById("reiniciar");
+
+
+/* =========================================================
+   PORTADA
+========================================================= */
+
+let abriendoCarta = false;
+
+function abrirCarta(e){
+
+    if(e){
+
+        e.preventDefault();
+
+    }
+
+    if(abriendoCarta){
+
+        return;
+
+    }
+
+    abriendoCarta = true;
+
+    inicioEl.classList.add("oculto");
+
+    setTimeout(()=>{
+
+        modalCartaEl.classList.add("activo");
+
+    },350);
 
 }
 
 
-/* =====================================================
-   ESCENA 3D
-===================================================== */
-
-function crearEscena(){
-
-
-    scene=
-    new THREE.Scene();
+inicioEl.addEventListener(
+    "pointerdown",
+    abrirCarta,
+    {passive:false}
+);
 
 
-    /* -----------------------------------------------
-       CAMARA
-    ------------------------------------------------ */
+/* =========================================================
+   ENTRAR AL UNIVERSO
+========================================================= */
 
-    camera=
-    new THREE.PerspectiveCamera(
+btnEntrarEl.addEventListener(
+    "click",
+    function(e){
 
-        55,
+        e.stopPropagation();
 
-        window.innerWidth/
-        window.innerHeight,
+        modalCartaEl.classList.remove(
+            "activo"
+        );
 
-        .1,
+        escenaEl.classList.add(
+            "activa"
+        );
 
-        1000
+        if(!escenaIniciada){
 
-    );
+            escenaIniciada = true;
+
+            crearEscena3D();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   WHATSAPP
+========================================================= */
+
+btnCompartirEl.addEventListener(
+    "click",
+    function(){
+
+        const textoCompartir =
+
+            "🌻 ¡Mi amor, te envié este universo " +
+            "con flores amarillas especialmente para ti! " +
+            "Abre tu regalo aquí: " +
+            window.location.href;
+
+
+        try{
+
+            const aux =
+                document.createElement("textarea");
+
+            aux.value =
+                textoCompartir;
+
+            document.body.appendChild(aux);
+
+            aux.select();
+
+            document.execCommand("copy");
+
+            document.body.removeChild(aux);
+
+        }catch(e){}
+
+
+        toastEl.classList.add(
+            "visible"
+        );
+
+
+        setTimeout(
+            function(){
+
+                toastEl.classList.remove(
+                    "visible"
+                );
+
+            },
+            3000
+        );
+
+
+        setTimeout(
+            function(){
+
+                window.open(
+
+                    "https://api.whatsapp.com/send?text=" +
+                    encodeURIComponent(
+                        textoCompartir
+                    ),
+
+                    "_blank"
+
+                );
+
+            },
+            700
+        );
+
+    }
+);
+
+
+/* =========================================================
+   CREAR ESCENA
+========================================================= */
+
+function crearEscena3D(){
+
+    scene =
+        new THREE.Scene();
+
+    scene.background =
+        new THREE.Color(
+            0x010100
+        );
+
+
+    camera =
+        new THREE.PerspectiveCamera(
+
+            48,
+
+            window.innerWidth /
+            window.innerHeight,
+
+            0.1,
+
+            1000
+
+        );
 
 
     camera.position.set(
         0,
-        5.5,
+        4.5,
         12
     );
 
@@ -467,506 +1054,680 @@ function crearEscena(){
     );
 
 
-    /* -----------------------------------------------
-       RENDER
-    ------------------------------------------------ */
+    renderer =
+        new THREE.WebGLRenderer({
 
-    renderer=
-    new THREE.WebGLRenderer({
+            antialias:true,
 
-        antialias:true,
+            alpha:false
 
-        alpha:false
-
-    });
+        });
 
 
     renderer.setPixelRatio(
+
         Math.min(
             window.devicePixelRatio,
             2
         )
+
     );
 
 
     renderer.setSize(
 
         window.innerWidth,
-
         window.innerHeight
 
     );
 
 
-    renderer.outputEncoding=
-    THREE.sRGBEncoding;
+    renderer.outputEncoding =
+        THREE.sRGBEncoding;
 
 
-    pantalla.appendChild(
+    escenaEl.appendChild(
         renderer.domElement
     );
 
 
-    /* -----------------------------------------------
-       FONDO
-    ------------------------------------------------ */
-
-    scene.background=
-    new THREE.Color(0x000000);
+    raycaster =
+        new THREE.Raycaster();
 
 
-    /* -----------------------------------------------
-       LUCES
-    ------------------------------------------------ */
+    mouse =
+        new THREE.Vector2();
 
-    const luz1=
-    new THREE.PointLight(
-        0xffd000,
-        5,
-        35
+
+    /* -----------------------------------------------------
+       ILUMINACIÓN
+    ----------------------------------------------------- */
+
+    scene.add(
+
+        new THREE.AmbientLight(
+            0xfff3dc,
+            1.7
+        )
+
     );
 
-    luz1.position.set(
+
+    const luzCentral =
+        new THREE.PointLight(
+
+            0xffc400,
+            5,
+            35
+
+        );
+
+
+    luzCentral.position.set(
         0,
-        5,
-        5
+        1,
+        2
     );
-
-    scene.add(luz1);
-
-
-    const luz2=
-    new THREE.PointLight(
-        0xff9900,
-        3,
-        25
-    );
-
-    luz2.position.set(
-        -5,
-        2,
-        -5
-    );
-
-    scene.add(luz2);
 
 
     scene.add(
-        new THREE.AmbientLight(
-            0x806020,
-            1.4
-        )
+        luzCentral
     );
 
 
-    /* -----------------------------------------------
-       UNIVERSO
-    ------------------------------------------------ */
+    const luzPrincipal =
+        new THREE.DirectionalLight(
 
-    universo=
-    new THREE.Group();
+            0xfff2c0,
+            3
+
+        );
+
+
+    luzPrincipal.position.set(
+        6,
+        12,
+        15
+    );
+
+
+    scene.add(
+        luzPrincipal
+    );
+
+
+    const luzLateral =
+        new THREE.DirectionalLight(
+
+            0xffb000,
+            1.8
+
+        );
+
+
+    luzLateral.position.set(
+        -10,
+        3,
+        8
+    );
+
+
+    scene.add(
+        luzLateral
+    );
+
+
+    /* -----------------------------------------------------
+       UNIVERSO
+    ----------------------------------------------------- */
+
+    universo =
+        new THREE.Group();
+
+
+    universo.rotation.x =
+        0.18;
+
 
     scene.add(
         universo
     );
 
 
-    /* -----------------------------------------------
-       PLANETA CENTRAL
-    ------------------------------------------------ */
+    crearSaturnoCentral();
 
-    crearCentro();
+    crearElementosFloralesGalacticos();
 
+    crearTextosGalacticos();
 
-    /* -----------------------------------------------
-       ORBITAS
-    ------------------------------------------------ */
+    crearCampoEstrellasBrillantes();
 
-    crearOrbitas();
-
-
-    /* -----------------------------------------------
-       FLORES
-    ------------------------------------------------ */
-
-    crearFlores();
-
-
-    /* -----------------------------------------------
-       MENSAJES
-    ------------------------------------------------ */
-
-    crearMensajes();
-
-
-    /* -----------------------------------------------
-       ESTRELLAS
-    ------------------------------------------------ */
-
-    crearEstrellas();
-
-
-    /* -----------------------------------------------
-       EVENTOS
-    ------------------------------------------------ */
+    crearSistemaPetalosCaida();
 
     configurarControles();
-
-
-    /* -----------------------------------------------
-       ANIMAR
-    ------------------------------------------------ */
 
     animar();
 
 }
 
 
-/* =====================================================
-   CENTRO NEGRO
-===================================================== */
+/* =========================================================
+   SATURNO CENTRAL
+========================================================= */
 
-function crearCentro(){
+function crearSaturnoCentral(){
 
+    saturnoGrupo =
+        new THREE.Group();
 
-    const grupo=
-    new THREE.Group();
 
-
-    /* -----------------------------------------------
-       ESFERA
-    ------------------------------------------------ */
-
-    const geo=
-    new THREE.SphereGeometry(
-        1.15,
-        32,
-        32
-    );
-
-
-    const mat=
-    new THREE.MeshStandardMaterial({
-
-        color:0x030303,
-
-        roughness:.25,
-
-        metalness:.8
-
-    });
-
-
-    const esfera=
-    new THREE.Mesh(
-        geo,
-        mat
-    );
-
-
-    grupo.add(
-        esfera
-    );
-
-
-    /* -----------------------------------------------
-       ANILLO
-    ------------------------------------------------ */
-
-    const geoAnillo=
-    new THREE.TorusGeometry(
-
-        2.0,
-
-        .18,
-
-        16,
-
-        100
-
-    );
-
-
-    const matAnillo=
-    new THREE.MeshBasicMaterial({
-
-        color:0xffdd22
-
-    });
-
-
-    const anillo=
-    new THREE.Mesh(
-        geoAnillo,
-        matAnillo
-    );
-
-
-    anillo.rotation.x=
-    Math.PI/2.4;
-
-
-    grupo.add(
-        anillo
-    );
-
-
-    /* -----------------------------------------------
-       GLOW
-    ------------------------------------------------ */
-
-    const glowGeo=
-    new THREE.TorusGeometry(
-
-        2.0,
-
-        .33,
-
-        16,
-
-        100
-
-    );
-
-
-    const glowMat=
-    new THREE.MeshBasicMaterial({
-
-        color:0xffaa00,
-
-        transparent:true,
-
-        opacity:.22
-
-    });
-
-
-    const glow=
-    new THREE.Mesh(
-        glowGeo,
-        glowMat
-    );
-
-
-    glow.rotation.x=
-    Math.PI/2.4;
-
-
-    grupo.add(
-        glow
-    );
-
-
-    universo.add(
-        grupo
-    );
-
-}
-
-
-/* =====================================================
-   ORBITAS
-===================================================== */
-
-function crearOrbitas(){
-
-
-    const radios=[
-        3.0,
-        4.2,
-        5.5,
-        6.7
-    ];
-
-
-    radios.forEach(
-        function(radio){
-
-            const geo=
-            new THREE.TorusGeometry(
-
-                radio,
-
-                .012,
-
-                8,
-
-                120
-
-            );
-
-
-            const mat=
-            new THREE.MeshBasicMaterial({
-
-                color:0xffcc22,
-
-                transparent:true,
-
-                opacity:.10
-
-            });
-
-
-            const orbita=
-            new THREE.Mesh(
-                geo,
-                mat
-            );
-
-
-            orbita.rotation.x=
-            Math.PI/2;
-
-
-            universo.add(
-                orbita
-            );
-
-        }
-    );
-
-}
-
-
-/* =====================================================
-   CREAR FLOR 3D
-===================================================== */
-
-function crearFlor3D(){
-
-
-    const flor=
-    new THREE.Group();
-
-
-    const cantidad=
-    10;
-
-
-    /* -----------------------------------------------
-       PETALOS
-    ------------------------------------------------ */
-
-    for(
-        let i=0;
-        i<cantidad;
-        i++
-    ){
-
-        const geo=
+    const esferaGeo =
         new THREE.SphereGeometry(
-
-            .42,
-
-            12,
-
-            8
-
+            0.42,
+            48,
+            32
         );
 
 
-        geo.scale(
-            .55,
-            1.3,
-            .18
-        );
-
-
-        const colores=[
-            0xffd21c,
-            0xffc400,
-            0xffe04a,
-            0xffb900
-        ];
-
-
-        const mat=
+    const esferaMat =
         new THREE.MeshStandardMaterial({
 
-            color:
-            colores[
-                Math.floor(
-                    Math.random()*
-                    colores.length
-                )
-            ],
+            color:0x241202,
 
-            emissive:0x6a3b00,
+            roughness:.3,
 
-            emissiveIntensity:.25,
+            metalness:.75,
 
-            roughness:.55
+            emissive:0x5b3000,
+
+            emissiveIntensity:.5
 
         });
 
 
-        const petalo=
+    const planeta =
         new THREE.Mesh(
-            geo,
-            mat
+            esferaGeo,
+            esferaMat
         );
 
 
-        const angulo=
-        i*
-        Math.PI*2/
-        cantidad;
-
-
-        petalo.position.x=
-        Math.cos(angulo)*.34;
-
-
-        petalo.position.y=
-        Math.sin(angulo)*.34;
-
-
-        petalo.rotation.z=
-        angulo;
-
-
-        flor.add(
-            petalo
-        );
-
-    }
-
-
-    /* -----------------------------------------------
-       CENTRO
-    ------------------------------------------------ */
-
-    const centroGeo=
-    new THREE.SphereGeometry(
-
-        .28,
-
-        16,
-
-        16
-
+    saturnoGrupo.add(
+        planeta
     );
 
 
-    const centroMat=
-    new THREE.MeshStandardMaterial({
+    /* ANILLO */
 
-        color:0x4b2500,
+    const anilloGeo =
+        new THREE.RingGeometry(
+            .55,
+            .88,
+            96
+        );
 
-        roughness:.8
+
+    const anilloMat =
+        new THREE.MeshBasicMaterial({
+
+            color:0xffd000,
+
+            side:
+                THREE.DoubleSide,
+
+            transparent:true,
+
+            opacity:.85
+
+        });
+
+
+    const anillo =
+        new THREE.Mesh(
+            anilloGeo,
+            anilloMat
+        );
+
+
+    anillo.rotation.x =
+        Math.PI / 2;
+
+
+    saturnoGrupo.add(
+        anillo
+    );
+
+
+    const anilloGeo2 =
+        new THREE.RingGeometry(
+            .9,
+            1.08,
+            96
+        );
+
+
+    const anilloMat2 =
+        new THREE.MeshBasicMaterial({
+
+            color:0xff8c00,
+
+            side:
+                THREE.DoubleSide,
+
+            transparent:true,
+
+            opacity:.45
+
+        });
+
+
+    const anillo2 =
+        new THREE.Mesh(
+            anilloGeo2,
+            anilloMat2
+        );
+
+
+    anillo2.rotation.x =
+        Math.PI / 2;
+
+
+    saturnoGrupo.add(
+        anillo2
+    );
+
+
+    universo.add(
+        saturnoGrupo
+    );
+
+}
+
+
+/* =========================================================
+   MATERIAL PETALOS
+========================================================= */
+
+function crearMaterialPetalo(color){
+
+    return new THREE.MeshStandardMaterial({
+
+        color:color,
+
+        roughness:.28,
+
+        metalness:.02,
+
+        side:THREE.DoubleSide,
+
+        transparent:true,
+
+        opacity:.98
 
     });
 
+}
 
-    const centro=
-    new THREE.Mesh(
-        centroGeo,
-        centroMat
+
+/* =========================================================
+   PETALO REALISTA DE GIRASOL
+========================================================= */
+
+function crearPetaloGirasol(
+    material,
+    escala=1
+){
+
+    const shape =
+        new THREE.Shape();
+
+
+    shape.moveTo(
+        0,
+        0
     );
 
 
-    centro.position.z=.2;
+    shape.bezierCurveTo(
+
+        -.16 * escala,
+        .16 * escala,
+
+        -.19 * escala,
+        .55 * escala,
+
+        0,
+        1.05 * escala
+
+    );
+
+
+    shape.bezierCurveTo(
+
+        .19 * escala,
+        .55 * escala,
+
+        .16 * escala,
+        .16 * escala,
+
+        0,
+        0
+
+    );
+
+
+    const geometry =
+        new THREE.ExtrudeGeometry(
+
+            shape,
+
+            {
+
+                depth:
+                    .035 * escala,
+
+                bevelEnabled:true,
+
+                bevelThickness:
+                    .018 * escala,
+
+                bevelSize:
+                    .015 * escala,
+
+                bevelSegments:3,
+
+                curveSegments:8
+
+            }
+
+        );
+
+
+    geometry.translate(
+        0,
+        -.48 * escala,
+        0
+    );
+
+
+    const petalo =
+        new THREE.Mesh(
+            geometry,
+            material
+        );
+
+
+    petalo.castShadow = true;
+
+    petalo.receiveShadow = true;
+
+
+    return petalo;
+
+}
+
+
+/* =========================================================
+   GIRASOL REALISTA
+========================================================= */
+
+function crearGirasol3D(){
+
+    const flor =
+        new THREE.Group();
+
+
+    /* -----------------------------------------------------
+       PÉTALOS EXTERIORES
+    ----------------------------------------------------- */
+
+    const amarilloOscuro =
+        crearMaterialPetalo(
+            0xf5a900
+        );
+
+
+    const amarillo =
+        crearMaterialPetalo(
+            0xffc400
+        );
+
+
+    const amarilloClaro =
+        crearMaterialPetalo(
+            0xffdc32
+        );
+
+
+    const capas = [
+
+        {
+            cantidad:24,
+            radio:.28,
+            escala:1,
+            material:amarilloOscuro,
+            z:-.03
+        },
+
+        {
+            cantidad:24,
+            radio:.25,
+            escala:.92,
+            material:amarillo,
+            z:.02
+        },
+
+        {
+            cantidad:24,
+            radio:.20,
+            escala:.78,
+            material:amarilloClaro,
+            z:.07
+        }
+
+    ];
+
+
+    capas.forEach(
+        function(capa){
+
+            for(
+                let i=0;
+                i<capa.cantidad;
+                i++
+            ){
+
+                const angulo =
+
+                    (
+                        i /
+                        capa.cantidad
+                    )
+                    *
+                    Math.PI *
+                    2
+                    +
+                    (capa.z * 3);
+
+
+                const petalo =
+                    crearPetaloGirasol(
+
+                        capa.material,
+
+                        capa.escala
+
+                    );
+
+
+                petalo.position.set(
+
+                    Math.cos(angulo) *
+                    capa.radio,
+
+                    Math.sin(angulo) *
+                    capa.radio,
+
+                    capa.z
+
+                );
+
+
+                petalo.rotation.z =
+                    angulo -
+                    Math.PI / 2;
+
+
+                /* ligera curvatura */
+
+                petalo.rotation.x =
+                    -.12 +
+                    Math.sin(
+                        angulo * 2
+                    ) * .06;
+
+
+                petalo.rotation.y =
+                    Math.cos(
+                        angulo
+                    ) * .08;
+
+
+                flor.add(
+                    petalo
+                );
+
+            }
+
+        }
+    );
+
+
+    /* -----------------------------------------------------
+       CENTRO DEL GIRASOL
+    ----------------------------------------------------- */
+
+    const centro =
+        new THREE.Group();
+
+
+    const centroGeo =
+        new THREE.CylinderGeometry(
+
+            .36,
+            .40,
+            .12,
+            48
+
+        );
+
+
+    const centroMat =
+        new THREE.MeshStandardMaterial({
+
+            color:0x3b1604,
+
+            roughness:.92,
+
+            metalness:0
+
+        });
+
+
+    const centroMesh =
+        new THREE.Mesh(
+
+            centroGeo,
+            centroMat
+
+        );
+
+
+    centroMesh.rotation.x =
+        Math.PI / 2;
+
+
+    centro.add(
+        centroMesh
+    );
+
+
+    /* -----------------------------------------------------
+       SEMILLAS
+    ----------------------------------------------------- */
+
+    const semillaMat =
+        new THREE.MeshStandardMaterial({
+
+            color:0x140601,
+
+            roughness:.85
+
+        });
+
+
+    for(
+        let i=0;
+        i<75;
+        i++
+    ){
+
+        const radio =
+            Math.sqrt(
+                Math.random()
+            ) * .29;
+
+
+        const angulo =
+            i *
+            Math.PI *
+            (3 -
+            Math.sqrt(5));
+
+
+        const semillaGeo =
+            new THREE.SphereGeometry(
+                .018,
+                7,
+                5
+            );
+
+
+        const semilla =
+            new THREE.Mesh(
+
+                semillaGeo,
+                semillaMat
+
+            );
+
+
+        semilla.position.set(
+
+            Math.cos(angulo) *
+            radio,
+
+            Math.sin(angulo) *
+            radio,
+
+            .075 +
+            radio * .04
+
+        );
+
+
+        semilla.scale.set(
+            1,
+            1,
+            .45
+        );
+
+
+        centro.add(
+            semilla
+        );
+
+    }
 
 
     flor.add(
@@ -974,70 +1735,1335 @@ function crearFlor3D(){
     );
 
 
+    /* -----------------------------------------------------
+       SÉPALOS VERDES
+    ----------------------------------------------------- */
+
+    const verde =
+        new THREE.MeshStandardMaterial({
+
+            color:0x2c641b,
+
+            roughness:.7
+
+        });
+
+
+    for(
+        let i=0;
+        i<12;
+        i++
+    ){
+
+        const angulo =
+            i /
+            12 *
+            Math.PI *
+            2;
+
+
+        const sepalGeo =
+            new THREE.ConeGeometry(
+                .075,
+                .30,
+                5
+            );
+
+
+        const sepal =
+            new THREE.Mesh(
+                sepalGeo,
+                verde
+            );
+
+
+        sepal.position.set(
+
+            Math.cos(angulo) *
+            .31,
+
+            Math.sin(angulo) *
+            .31,
+
+            -.08
+
+        );
+
+
+        sepal.rotation.z =
+            -angulo;
+
+
+        flor.add(
+            sepal
+        );
+
+    }
+
+
     return flor;
 
 }
 
 
-/* =====================================================
-   FLORES ORBITANDO
-===================================================== */
+/* =========================================================
+   HOJA REALISTA
+========================================================= */
 
-function crearFlores(){
+function crearHojaRealista(
+    escala=1
+){
+
+    const shape =
+        new THREE.Shape();
 
 
-    const cantidad=
-    55;
+    shape.moveTo(
+        0,
+        0
+    );
+
+
+    shape.bezierCurveTo(
+
+        .20 * escala,
+        .18 * escala,
+
+        .36 * escala,
+        .52 * escala,
+
+        0,
+        .95 * escala
+
+    );
+
+
+    shape.bezierCurveTo(
+
+        -.32 * escala,
+        .62 * escala,
+
+        -.20 * escala,
+        .18 * escala,
+
+        0,
+        0
+
+    );
+
+
+    const geo =
+        new THREE.ExtrudeGeometry(
+
+            shape,
+
+            {
+
+                depth:.018,
+
+                bevelEnabled:true,
+
+                bevelThickness:.008,
+
+                bevelSize:.006,
+
+                bevelSegments:2
+
+            }
+
+        );
+
+
+    const material =
+        new THREE.MeshStandardMaterial({
+
+            color:
+                0x24651e,
+
+            roughness:.65,
+
+            side:
+                THREE.DoubleSide
+
+        });
+
+
+    const hoja =
+        new THREE.Mesh(
+            geo,
+            material
+        );
+
+
+    return hoja;
+
+}
+
+
+/* =========================================================
+   RAMO DE GIRASOLES
+========================================================= */
+
+function crearRamoGirasoles3D(){
+
+    const ramo =
+        new THREE.Group();
+
+
+    const talloMat =
+        new THREE.MeshStandardMaterial({
+
+            color:0x18551c,
+
+            roughness:.65
+
+        });
+
+
+    /* TALLOS */
+
+    for(
+        let i=0;
+        i<12;
+        i++
+    ){
+
+        const angulo =
+            i /
+            12 *
+            Math.PI *
+            2;
+
+
+        const talloGeo =
+            new THREE.CylinderGeometry(
+
+                .018,
+                .025,
+                1.35,
+                10
+
+            );
+
+
+        const tallo =
+            new THREE.Mesh(
+
+                talloGeo,
+                talloMat
+
+            );
+
+
+        tallo.position.set(
+
+            Math.cos(angulo) *
+            .08,
+
+            -.62,
+
+            Math.sin(angulo) *
+            .08
+
+        );
+
+
+        tallo.rotation.z =
+            Math.sin(angulo) *
+            .12;
+
+
+        tallo.rotation.x =
+            Math.cos(angulo) *
+            .12;
+
+
+        ramo.add(
+            tallo
+        );
+
+    }
+
+
+    /* HOJAS */
+
+    for(
+        let i=0;
+        i<10;
+        i++
+    ){
+
+        const hoja =
+            crearHojaRealista(
+                .65
+            );
+
+
+        const angulo =
+            i /
+            10 *
+            Math.PI *
+            2;
+
+
+        hoja.position.set(
+
+            Math.cos(angulo) *
+            .13,
+
+            -.30 +
+            (i % 3) * .12,
+
+            Math.sin(angulo) *
+            .13
+
+        );
+
+
+        hoja.rotation.z =
+            angulo -
+            Math.PI / 2;
+
+
+        hoja.rotation.x =
+            -.45;
+
+
+        ramo.add(
+            hoja
+        );
+
+    }
+
+
+    /* LAZO */
+
+    const lazoGeo =
+        new THREE.TorusGeometry(
+            .13,
+            .035,
+            12,
+            32
+        );
+
+
+    const lazoMat =
+        new THREE.MeshStandardMaterial({
+
+            color:0x356d24,
+
+            roughness:.4
+
+        });
+
+
+    const lazo =
+        new THREE.Mesh(
+
+            lazoGeo,
+            lazoMat
+
+        );
+
+
+    lazo.rotation.x =
+        Math.PI / 2;
+
+
+    lazo.position.y =
+        -.40;
+
+
+    ramo.add(
+        lazo
+    );
+
+
+    /* GIRASOLES */
+
+    const posiciones = [
+
+        {
+            x:0,
+            y:.55,
+            z:0,
+            s:.40
+        },
+
+        {
+            x:-.27,
+            y:.48,
+            z:.08,
+            s:.34
+        },
+
+        {
+            x:.27,
+            y:.48,
+            z:.08,
+            s:.34
+        },
+
+        {
+            x:-.38,
+            y:.31,
+            z:0,
+            s:.32
+        },
+
+        {
+            x:.38,
+            y:.31,
+            z:0,
+            s:.32
+        },
+
+        {
+            x:-.17,
+            y:.29,
+            z:.24,
+            s:.30
+        },
+
+        {
+            x:.17,
+            y:.29,
+            z:.24,
+            s:.30
+        },
+
+        {
+            x:0,
+            y:.24,
+            z:-.22,
+            s:.32
+        }
+
+    ];
+
+
+    posiciones.forEach(
+        function(p){
+
+            const flor =
+                crearGirasol3D();
+
+
+            flor.position.set(
+                p.x,
+                p.y,
+                p.z
+            );
+
+
+            flor.scale.set(
+                p.s,
+                p.s,
+                p.s
+            );
+
+
+            ramo.add(
+                flor
+            );
+
+        }
+    );
+
+
+    return ramo;
+
+}
+
+
+/* =========================================================
+   ROSA AMARILLA REALISTA
+========================================================= */
+
+function crearRosaRealista(){
+
+    const rosa =
+        new THREE.Group();
+
+
+    const amarillo1 =
+        new THREE.MeshStandardMaterial({
+
+            color:0xffb900,
+
+            roughness:.34,
+
+            side:
+                THREE.DoubleSide
+
+        });
+
+
+    const amarillo2 =
+        new THREE.MeshStandardMaterial({
+
+            color:0xffd52a,
+
+            roughness:.30,
+
+            side:
+                THREE.DoubleSide
+
+        });
+
+
+    const amarillo3 =
+        new THREE.MeshStandardMaterial({
+
+            color:0xffe15a,
+
+            roughness:.28,
+
+            side:
+                THREE.DoubleSide
+
+        });
+
+
+    /* -----------------------------------------------------
+       PÉTALOS EXTERIORES
+    ----------------------------------------------------- */
+
+    for(
+        let i=0;
+        i<12;
+        i++
+    ){
+
+        const angulo =
+            i /
+            12 *
+            Math.PI *
+            2;
+
+
+        const shape =
+            new THREE.Shape();
+
+
+        shape.moveTo(
+            0,
+            0
+        );
+
+
+        shape.bezierCurveTo(
+
+            -.20,
+            .08,
+
+            -.30,
+            .32,
+
+            -.10,
+            .52
+
+        );
+
+
+        shape.bezierCurveTo(
+
+            .12,
+            .68,
+
+            .27,
+            .38,
+
+            .18,
+            .12
+
+        );
+
+
+        shape.bezierCurveTo(
+
+            .13,
+            .05,
+
+            .06,
+            .02,
+
+            0,
+            0
+
+        );
+
+
+        const geo =
+            new THREE.ExtrudeGeometry(
+
+                shape,
+
+                {
+
+                    depth:.025,
+
+                    bevelEnabled:true,
+
+                    bevelThickness:.012,
+
+                    bevelSize:.01,
+
+                    bevelSegments:3
+
+                }
+
+            );
+
+
+        const petalo =
+            new THREE.Mesh(
+
+                geo,
+
+                amarillo1
+
+            );
+
+
+        petalo.rotation.z =
+            angulo;
+
+
+        petalo.rotation.x =
+            -.08;
+
+
+        petalo.position.set(
+
+            Math.cos(angulo) *
+            .04,
+
+            Math.sin(angulo) *
+            .04,
+
+            -.02
+
+        );
+
+
+        rosa.add(
+            petalo
+        );
+
+    }
+
+
+    /* -----------------------------------------------------
+       PÉTALOS MEDIOS
+    ----------------------------------------------------- */
+
+    for(
+        let i=0;
+        i<9;
+        i++
+    ){
+
+        const angulo =
+            i /
+            9 *
+            Math.PI *
+            2 +
+            .2;
+
+
+        const shape =
+            new THREE.Shape();
+
+
+        shape.moveTo(
+            0,
+            0
+        );
+
+
+        shape.bezierCurveTo(
+
+            -.16,
+            .12,
+
+            -.19,
+            .38,
+
+            0,
+            .54
+
+        );
+
+
+        shape.bezierCurveTo(
+
+            .20,
+            .39,
+
+            .18,
+            .14,
+
+            0,
+            0
+
+        );
+
+
+        const geo =
+            new THREE.ExtrudeGeometry(
+
+                shape,
+
+                {
+
+                    depth:.028,
+
+                    bevelEnabled:true,
+
+                    bevelThickness:.012,
+
+                    bevelSize:.01,
+
+                    bevelSegments:3
+
+                }
+
+            );
+
+
+        const petalo =
+            new THREE.Mesh(
+
+                geo,
+
+                amarillo2
+
+            );
+
+
+        petalo.rotation.z =
+            angulo;
+
+
+        petalo.position.z =
+            .04;
+
+
+        rosa.add(
+            petalo
+        );
+
+    }
+
+
+    /* -----------------------------------------------------
+       PÉTALOS INTERNOS CURVADOS
+    ----------------------------------------------------- */
+
+    for(
+        let i=0;
+        i<6;
+        i++
+    ){
+
+        const angulo =
+            i /
+            6 *
+            Math.PI *
+            2;
+
+
+        const shape =
+            new THREE.Shape();
+
+
+        shape.moveTo(
+            0,
+            0
+        );
+
+
+        shape.bezierCurveTo(
+
+            -.14,
+            .10,
+
+            -.13,
+            .30,
+
+            .02,
+            .40
+
+        );
+
+
+        shape.bezierCurveTo(
+
+            .15,
+            .29,
+
+            .14,
+            .10,
+
+            0,
+            0
+
+        );
+
+
+        const geo =
+            new THREE.ExtrudeGeometry(
+
+                shape,
+
+                {
+
+                    depth:.03,
+
+                    bevelEnabled:true,
+
+                    bevelThickness:.01,
+
+                    bevelSize:.008,
+
+                    bevelSegments:3
+
+                }
+
+            );
+
+
+        const petalo =
+            new THREE.Mesh(
+
+                geo,
+
+                amarillo3
+
+            );
+
+
+        petalo.rotation.z =
+            angulo;
+
+
+        petalo.position.z =
+            .08;
+
+
+        rosa.add(
+            petalo
+        );
+
+    }
+
+
+    /* -----------------------------------------------------
+       CENTRO EN ESPIRAL
+    ----------------------------------------------------- */
+
+    const centroMat =
+        new THREE.MeshStandardMaterial({
+
+            color:0xffa800,
+
+            roughness:.35
+
+        });
 
 
     for(
         let i=0;
-        i<cantidad;
+        i<4;
         i++
     ){
 
-
-        const flor=
-        crearFlor3D();
-
-
-        const radio=
-        3+
-        Math.random()*4;
+        const radio =
+            .055 +
+            i * .035;
 
 
-        const angulo=
-        Math.random()*
-        Math.PI*2;
+        const geo =
+            new THREE.TorusGeometry(
+
+                radio,
+
+                .018,
+
+                8,
+
+                24
+
+            );
 
 
-        /* -------------------------------------------
-           POSICION 3D
-        ------------------------------------------- */
+        const anillo =
+            new THREE.Mesh(
 
-        flor.position.x=
-        Math.cos(angulo)*
-        radio;
+                geo,
+                centroMat
 
-
-        flor.position.z=
-        Math.sin(angulo)*
-        radio;
+            );
 
 
-        flor.position.y=
-        (Math.random()-.5)*
-        1.5;
+        anillo.rotation.x =
+            Math.PI / 2;
 
 
-        /* -------------------------------------------
-           TAMAÑO
-        ------------------------------------------- */
+        anillo.position.z =
+            .10 +
+            i * .005;
 
-        const escala=
-        .35+
-        Math.random()*
-        .7;
+
+        rosa.add(
+            anillo
+        );
+
+    }
+
+
+    /* SÉPALOS */
+
+    const verde =
+        new THREE.MeshStandardMaterial({
+
+            color:0x285b18,
+
+            roughness:.7
+
+        });
+
+
+    for(
+        let i=0;
+        i<5;
+        i++
+    ){
+
+        const geo =
+            new THREE.ConeGeometry(
+                .06,
+                .22,
+                5
+            );
+
+
+        const sepal =
+            new THREE.Mesh(
+                geo,
+                verde
+            );
+
+
+        const a =
+            i /
+            5 *
+            Math.PI *
+            2;
+
+
+        sepal.position.set(
+
+            Math.cos(a) *
+            .15,
+
+            Math.sin(a) *
+            .15,
+
+            -.06
+
+        );
+
+
+        sepal.rotation.z =
+            -a;
+
+
+        rosa.add(
+            sepal
+        );
+
+    }
+
+
+    return rosa;
+
+}
+
+
+/* =========================================================
+   RAMO DE ROSAS
+========================================================= */
+
+function crearRamoRosasAmarillas3D(){
+
+    const ramo =
+        new THREE.Group();
+
+
+    const talloMat =
+        new THREE.MeshStandardMaterial({
+
+            color:0x174b18,
+
+            roughness:.65
+
+        });
+
+
+    /* TALLOS */
+
+    for(
+        let i=0;
+        i<13;
+        i++
+    ){
+
+        const a =
+            i /
+            13 *
+            Math.PI *
+            2;
+
+
+        const geo =
+            new THREE.CylinderGeometry(
+
+                .017,
+                .025,
+                1.3,
+                9
+
+            );
+
+
+        const tallo =
+            new THREE.Mesh(
+                geo,
+                talloMat
+            );
+
+
+        tallo.position.set(
+
+            Math.cos(a) *
+            .09,
+
+            -.62,
+
+            Math.sin(a) *
+            .09
+
+        );
+
+
+        tallo.rotation.z =
+            Math.sin(a) *
+            .12;
+
+
+        ramo.add(
+            tallo
+        );
+
+    }
+
+
+    /* HOJAS */
+
+    for(
+        let i=0;
+        i<9;
+        i++
+    ){
+
+        const hoja =
+            crearHojaRealista(
+                .55
+            );
+
+
+        const a =
+            i /
+            9 *
+            Math.PI *
+            2;
+
+
+        hoja.position.set(
+
+            Math.cos(a) *
+            .15,
+
+            -.30 +
+            (i % 2) * .10,
+
+            Math.sin(a) *
+            .15
+
+        );
+
+
+        hoja.rotation.z =
+            a;
+
+
+        hoja.rotation.x =
+            -.35;
+
+
+        ramo.add(
+            hoja
+        );
+
+    }
+
+
+    /* LAZO */
+
+    const lazoGeo =
+        new THREE.TorusGeometry(
+            .13,
+            .035,
+            12,
+            32
+        );
+
+
+    const lazoMat =
+        new THREE.MeshStandardMaterial({
+
+            color:0x326923,
+
+            roughness:.4
+
+        });
+
+
+    const lazo =
+        new THREE.Mesh(
+
+            lazoGeo,
+            lazoMat
+
+        );
+
+
+    lazo.rotation.x =
+        Math.PI / 2;
+
+
+    lazo.position.y =
+        -.39;
+
+
+    ramo.add(
+        lazo
+    );
+
+
+    /* ROSAS */
+
+    const posiciones = [
+
+        {
+            x:0,
+            y:.56,
+            z:0,
+            s:.40
+        },
+
+        {
+            x:-.24,
+            y:.47,
+            z:.10,
+            s:.35
+        },
+
+        {
+            x:.24,
+            y:.47,
+            z:.10,
+            s:.35
+        },
+
+        {
+            x:-.35,
+            y:.34,
+            z:0,
+            s:.33
+        },
+
+        {
+            x:.35,
+            y:.34,
+            z:0,
+            s:.33
+        },
+
+        {
+            x:-.15,
+            y:.31,
+            z:.22,
+            s:.31
+        },
+
+        {
+            x:.15,
+            y:.31,
+            z:.22,
+            s:.31
+        },
+
+        {
+            x:0,
+            y:.26,
+            z:-.20,
+            s:.32
+        },
+
+        {
+            x:-.24,
+            y:.23,
+            z:-.16,
+            s:.28
+        },
+
+        {
+            x:.24,
+            y:.23,
+            z:-.16,
+            s:.28
+        }
+
+    ];
+
+
+    posiciones.forEach(
+        function(p){
+
+            const rosa =
+                crearRosaRealista();
+
+
+            rosa.position.set(
+                p.x,
+                p.y,
+                p.z
+            );
+
+
+            rosa.scale.set(
+                p.s,
+                p.s,
+                p.s
+            );
+
+
+            ramo.add(
+                rosa
+            );
+
+        }
+    );
+
+
+    return ramo;
+
+}
+
+
+/* =========================================================
+   ELEMENTOS FLORALES DEL UNIVERSO
+========================================================= */
+
+function crearElementosFloralesGalacticos(){
+
+    elementosFlorales = [];
+
+
+    const total =
+        36;
+
+
+    for(
+        let i=0;
+        i<total;
+        i++
+    ){
+
+        const tipo =
+            i % 3;
+
+
+        let flor;
+
+
+        if(tipo === 0){
+
+            flor =
+                crearGirasol3D();
+
+        }
+        else if(tipo === 1){
+
+            flor =
+                crearRamoGirasoles3D();
+
+        }
+        else{
+
+            flor =
+                crearRamoRosasAmarillas3D();
+
+        }
+
+
+        const radio =
+            3.0 +
+            Math.random() *
+            5.5;
+
+
+        const angulo =
+
+            i /
+            total *
+            Math.PI *
+            2
+            +
+            (Math.random() -.5)
+            * .35;
+
+
+        flor.position.x =
+            Math.cos(angulo) *
+            radio;
+
+
+        flor.position.z =
+            Math.sin(angulo) *
+            radio;
+
+
+        flor.position.y =
+
+            (Math.random() -.5)
+            * 2.4;
+
+
+        let escala =
+            .27 +
+            Math.random() *
+            .17;
+
+
+        if(tipo === 0){
+
+            escala *= .75;
+
+        }
 
 
         flor.scale.set(
@@ -1047,23 +3073,38 @@ function crearFlores(){
         );
 
 
-        /* -------------------------------------------
-           DATOS
-        ------------------------------------------- */
+        flor.userData = {
 
-        flor.userData={
+            frase:
+                FRASES_FLORALES[
+                    i %
+                    FRASES_FLORALES.length
+                ].txt,
 
-            radio:radio,
+            emoji:
+                FRASES_FLORALES[
+                    i %
+                    FRASES_FLORALES.length
+                ].emoji,
 
-            angulo:angulo,
+            tipo:tipo,
+
+            flotar:
+                Math.random() *
+                Math.PI *
+                2,
 
             velocidad:
-            .0015+
-            Math.random()*.004,
+                .4 +
+                Math.random() *
+                .5,
 
-            fase:
-            Math.random()*
-            Math.PI*2
+            rotacion:
+                (Math.random() -.5)
+                * .003,
+
+            escalaOriginal:
+                escala
 
         };
 
@@ -1073,7 +3114,7 @@ function crearFlores(){
         );
 
 
-        flores.push(
+        elementosFlorales.push(
             flor
         );
 
@@ -1082,99 +3123,108 @@ function crearFlores(){
 }
 
 
-/* =====================================================
-   CREAR TEXTO COMO SPRITE
-===================================================== */
+/* =========================================================
+   TEXTOS
+========================================================= */
 
-function crearTexto(texto){
+function crearTextoSprite(
+    texto
+){
 
-
-    const canvas=
-    document.createElement(
-        "canvas"
-    );
-
-
-    canvas.width=512;
-
-    canvas.height=128;
+    const canvas =
+        document.createElement(
+            "canvas"
+        );
 
 
-    const ctx=
-    canvas.getContext(
-        "2d"
-    );
+    canvas.width =
+        512;
+
+
+    canvas.height =
+        128;
+
+
+    const ctx =
+        canvas.getContext(
+            "2d"
+        );
 
 
     ctx.clearRect(
         0,
         0,
-        512,
-        128
+        canvas.width,
+        canvas.height
     );
 
 
-    ctx.font=
-    "bold 34px Segoe UI";
+    ctx.font =
+        'bold 38px "Great Vibes"';
 
 
-    ctx.textAlign=
-    "center";
+    ctx.textAlign =
+        "center";
 
 
-    ctx.textBaseline=
-    "middle";
+    ctx.textBaseline =
+        "middle";
 
 
-    /* GLOW */
-
-    ctx.shadowColor=
-    "#ffd000";
-
-    ctx.shadowBlur=
-    18;
+    ctx.shadowColor =
+        "#ffd700";
 
 
-    ctx.fillStyle=
-    "#fff9c0";
+    ctx.shadowBlur =
+        16;
+
+
+    ctx.fillStyle =
+        "#fff7c7";
 
 
     ctx.fillText(
+
         texto,
-        256,
-        64
+
+        canvas.width / 2,
+
+        canvas.height / 2
+
     );
 
 
-    const textura=
-    new THREE.CanvasTexture(
-        canvas
-    );
+    const texture =
+        new THREE.CanvasTexture(
+            canvas
+        );
 
 
-    textura.needsUpdate=
-    true;
+    texture.needsUpdate =
+        true;
 
 
-    const material=
-    new THREE.SpriteMaterial({
+    const material =
+        new THREE.SpriteMaterial({
 
-        map:textura,
+            map:texture,
 
-        transparent:true
+            transparent:true,
 
-    });
+            depthWrite:false
+
+        });
 
 
-    const sprite=
-    new THREE.Sprite(
-        material
-    );
+    const sprite =
+        new THREE.Sprite(
+            material
+        );
 
 
     sprite.scale.set(
-        2.5,
-        .63,
+        3.1,
+        .78,
         1
     );
 
@@ -1184,164 +3234,97 @@ function crearTexto(texto){
 }
 
 
-/* =====================================================
-   MENSAJES ORBITANDO
-===================================================== */
+function crearTextosGalacticos(){
 
-function crearMensajes(){
+    FRASES_ORBITA.forEach(
 
+        function(frase,i){
 
-    const textos=[
-
-        "Pura luz ✨",
-
-        "Sonríe siempre 🌻",
-
-        "Feliz día",
-
-        "Solo para ti 💛",
-
-        "Flores para ti",
-
-        "Alegras mi vida",
-
-        "Un detalle amarillo",
-
-        "Eres magia ✨",
-
-        "Luz en mi vida",
-
-        "Feliz día 🌼",
-
-        "Sonríe siempre",
-
-        "Pura alegría 💛",
-
-        "Que nunca dejes de florecer",
-
-        "Un detalle especial 🌻",
-
-        "Brilla siempre ✨",
-
-        "Flores para ti 💛"
-
-    ];
+            const sprite =
+                crearTextoSprite(
+                    frase
+                );
 
 
-    for(
-        let i=0;
-        i<textos.length;
-        i++
-    ){
+            const a =
+                i /
+                FRASES_ORBITA.length *
+                Math.PI *
+                2;
 
 
-        const texto=
-        crearTexto(
-            textos[i]
-        );
+            const radio =
+                4.2 +
+                (i % 3) *
+                1.2;
 
 
-        const radio=
-        3.2+
-        Math.random()*3.5;
+            sprite.position.set(
+
+                Math.cos(a) *
+                radio,
+
+                (Math.random() -.5)
+                * 2,
+
+                Math.sin(a) *
+                radio
+
+            );
 
 
-        const angulo=
-        Math.random()*
-        Math.PI*2;
+            universo.add(
+                sprite
+            );
 
+        }
 
-        texto.position.x=
-        Math.cos(angulo)*
-        radio;
-
-
-        texto.position.z=
-        Math.sin(angulo)*
-        radio;
-
-
-        texto.position.y=
-        (Math.random()-.5)*
-        1.2;
-
-
-        const escala=
-        .7+
-        Math.random()*.7;
-
-
-        texto.scale.multiplyScalar(
-            escala
-        );
-
-
-        texto.userData={
-
-            radio:radio,
-
-            angulo:angulo,
-
-            velocidad:
-            .001+
-            Math.random()*.003
-
-        };
-
-
-        universo.add(
-            texto
-        );
-
-
-        mensajes.push(
-            texto
-        );
-
-    }
+    );
 
 }
 
 
-/* =====================================================
+/* =========================================================
    ESTRELLAS
-===================================================== */
+========================================================= */
 
-function crearEstrellas(){
+function crearCampoEstrellasBrillantes(){
+
+    const cantidad =
+        3000;
 
 
-    const cantidad=
-    1800;
+    const geo =
+        new THREE.BufferGeometry();
 
 
-    const posiciones=
-    new Float32Array(
-        cantidad*3
-    );
+    const posiciones =
+        new Float32Array(
+            cantidad * 3
+        );
 
 
     for(
         let i=0;
-        i<cantidad;
-        i++
+        i<posiciones.length;
+        i+=3
     ){
 
-        posiciones[i*3]=
-        (Math.random()-.5)*30;
+        posiciones[i] =
+            (Math.random()-.5)
+            * 180;
 
 
-        posiciones[i*3+1]=
-        (Math.random()-.5)*18;
+        posiciones[i+1] =
+            (Math.random()-.5)
+            * 180;
 
 
-        posiciones[i*3+2]=
-        (Math.random()-.5)*25;
+        posiciones[i+2] =
+            (Math.random()-.5)
+            * 180;
 
     }
-
-
-    const geo=
-    new THREE.BufferGeometry();
 
 
     geo.setAttribute(
@@ -1356,71 +3339,291 @@ function crearEstrellas(){
     );
 
 
-    const mat=
-    new THREE.PointsMaterial({
+    const mat =
+        new THREE.PointsMaterial({
 
-        color:0xffffff,
+            color:0xfff5d0,
 
-        size:.035,
+            size:.20,
 
-        transparent:true,
+            transparent:true,
 
-        opacity:.85
+            opacity:.85,
 
-    });
+            depthWrite:false
+
+        });
 
 
-    estrellas=
-    new THREE.Points(
-        geo,
-        mat
-    );
+    estrellasPuntos =
+        new THREE.Points(
+            geo,
+            mat
+        );
 
 
     scene.add(
-        estrellas
+        estrellasPuntos
     );
 
 }
 
 
-/* =====================================================
+/* =========================================================
+   PÉTALOS FLOTANDO
+========================================================= */
+
+function crearSistemaPetalosCaida(){
+
+    const cantidad =
+        180;
+
+
+    const geo =
+        new THREE.BufferGeometry();
+
+
+    const posiciones =
+        new Float32Array(
+            cantidad * 3
+        );
+
+
+    for(
+        let i=0;
+        i<posiciones.length;
+        i+=3
+    ){
+
+        posiciones[i] =
+            (Math.random()-.5)
+            * 25;
+
+
+        posiciones[i+1] =
+            Math.random() *
+            20 -
+            10;
+
+
+        posiciones[i+2] =
+            (Math.random()-.5)
+            * 25;
+
+    }
+
+
+    geo.setAttribute(
+
+        "position",
+
+        new THREE.BufferAttribute(
+            posiciones,
+            3
+        )
+
+    );
+
+
+    const mat =
+        new THREE.PointsMaterial({
+
+            color:0xffd21a,
+
+            size:.12,
+
+            transparent:true,
+
+            opacity:.7,
+
+            depthWrite:false
+
+        });
+
+
+    petalosSistema =
+        new THREE.Points(
+            geo,
+            mat
+        );
+
+
+    scene.add(
+        petalosSistema
+    );
+
+}
+
+
+/* =========================================================
+   ORIENTAR FLORES HACIA LA CÁMARA
+========================================================= */
+
+function orientarFloresHaciaCamara(){
+
+    const posicionFlor =
+        new THREE.Vector3();
+
+
+    const quaternionMundo =
+        new THREE.Quaternion();
+
+
+    const quaternionPadre =
+        new THREE.Quaternion();
+
+
+    const quaternionLocal =
+        new THREE.Quaternion();
+
+
+    const matriz =
+        new THREE.Matrix4();
+
+
+    elementosFlorales.forEach(
+
+        function(flor){
+
+            flor.getWorldPosition(
+                posicionFlor
+            );
+
+
+            /*
+             * La flor siempre mira hacia
+             * la cámara.
+             *
+             * Esto evita que al rotar el
+             * universo los pétalos queden
+             * completamente de lado.
+             */
+
+            matriz.lookAt(
+
+                posicionFlor,
+
+                camera.position,
+
+                new THREE.Vector3(
+                    0,
+                    1,
+                    0
+                )
+
+            );
+
+
+            quaternionMundo.setFromRotationMatrix(
+                matriz
+            );
+
+
+            if(flor.parent){
+
+                flor.parent.getWorldQuaternion(
+                    quaternionPadre
+                );
+
+                quaternionPadre.invert();
+
+                quaternionLocal.copy(
+                    quaternionPadre
+                );
+
+                quaternionLocal.multiply(
+                    quaternionMundo
+                );
+
+                flor.quaternion.slerp(
+                    quaternionLocal,
+                    .08
+                );
+
+            }
+
+        }
+
+    );
+
+}
+
+
+/* =========================================================
    CONTROLES
-===================================================== */
+========================================================= */
 
 function configurarControles(){
 
+    let arrastrando =
+        false;
 
-    const canvas=
-    renderer.domElement;
+
+    let prevX = 0;
+    let prevY = 0;
 
 
-    /* -----------------------------------------------
-       MOUSE
-    ----------------------------------------------- */
+    const dom =
+        renderer.domElement;
 
-    canvas.addEventListener(
 
-        "mousedown",
+    /* ZOOM */
+
+    dom.addEventListener(
+
+        "wheel",
 
         function(e){
 
-            arrastrando=true;
+            e.preventDefault();
 
-            autoRotacion=false;
 
-            anteriorX=e.clientX;
+            camera.position.z =
+                THREE.MathUtils.clamp(
 
-            anteriorY=e.clientY;
+                    camera.position.z +
+                    e.deltaY *
+                    .006,
+
+                    5.5,
+                    25
+
+                );
+
+        },
+
+        {
+            passive:false
+        }
+
+    );
+
+
+    /* MOUSE */
+
+    dom.addEventListener(
+
+        "pointerdown",
+
+        function(e){
+
+            arrastrando =
+                true;
+
+            prevX =
+                e.clientX;
+
+            prevY =
+                e.clientY;
 
         }
 
     );
 
 
-    canvas.addEventListener(
+    dom.addEventListener(
 
-        "mousemove",
+        "pointermove",
 
         function(e){
 
@@ -1428,341 +3631,365 @@ function configurarControles(){
                 return;
 
 
-            const dx=
-            e.clientX-
-            anteriorX;
+            const dx =
+                e.clientX -
+                prevX;
 
 
-            const dy=
-            e.clientY-
-            anteriorY;
+            const dy =
+                e.clientY -
+                prevY;
 
 
             universo.rotation.y +=
-            dx*.006;
+                dx * .004;
 
 
             universo.rotation.x +=
-            dy*.003;
+                dy * .003;
 
 
-            anteriorX=
-            e.clientX;
+            universo.rotation.x =
+                THREE.MathUtils.clamp(
+
+                    universo.rotation.x,
+
+                    -.8,
+                    .8
+
+                );
 
 
-            anteriorY=
-            e.clientY;
+            prevX =
+                e.clientX;
+
+
+            prevY =
+                e.clientY;
 
         }
 
     );
 
 
-    canvas.addEventListener(
+    window.addEventListener(
 
-        "mouseup",
+        "pointerup",
 
         function(){
 
-            arrastrando=false;
-
-            autoRotacion=true;
+            arrastrando =
+                false;
 
         }
 
     );
 
 
-    /* -----------------------------------------------
-       TOUCH
-    ----------------------------------------------- */
-
-    canvas.addEventListener(
-
-        "touchstart",
-
-        function(e){
-
-            autoRotacion=false;
-
-
-            if(
-                e.touches.length===1
-            ){
-
-                anteriorX=
-                e.touches[0].clientX;
-
-                anteriorY=
-                e.touches[0].clientY;
-
-            }
-
-
-            if(
-                e.touches.length===2
-            ){
-
-                distanciaInicial=
-                distancia(
-                    e.touches[0],
-                    e.touches[1]
-                );
-
-                zoomInicial=
-                camera.position.z;
-
-            }
-
-        },
-
-        {passive:false}
-
+    dom.addEventListener(
+        "click",
+        manejarRaycast
     );
 
 
-    canvas.addEventListener(
+    /* REINICIAR */
 
-        "touchmove",
+    btnReiniciarEl.addEventListener(
 
-        function(e){
-
-            e.preventDefault();
-
-
-            /* ---------------------------------------
-               UN DEDO = GIRAR
-            --------------------------------------- */
-
-            if(
-                e.touches.length===1
-            ){
-
-                const x=
-                e.touches[0].clientX;
-
-                const y=
-                e.touches[0].clientY;
-
-
-                const dx=
-                x-anteriorX;
-
-                const dy=
-                y-anteriorY;
-
-
-                universo.rotation.y +=
-                dx*.006;
-
-
-                universo.rotation.x +=
-                dy*.004;
-
-
-                anteriorX=x;
-
-                anteriorY=y;
-
-            }
-
-
-            /* ---------------------------------------
-               DOS DEDOS = ZOOM
-            --------------------------------------- */
-
-            if(
-                e.touches.length===2
-            ){
-
-                const nuevaDistancia=
-                distancia(
-                    e.touches[0],
-                    e.touches[1]
-                );
-
-
-                const diferencia=
-                nuevaDistancia-
-                distanciaInicial;
-
-
-                camera.position.z=
-                zoomInicial-
-                diferencia*.012;
-
-
-                camera.position.z=
-                Math.max(
-                    5,
-                    Math.min(
-                        18,
-                        camera.position.z
-                    )
-                );
-
-            }
-
-        },
-
-        {passive:false}
-
-    );
-
-
-    canvas.addEventListener(
-
-        "touchend",
+        "click",
 
         function(){
 
-            autoRotacion=true;
+            universo.rotation.set(
+                .18,
+                0,
+                0
+            );
+
+
+            camera.position.set(
+                0,
+                4.5,
+                12
+            );
 
         }
+
+    );
+
+
+    /* CERRAR POPUP */
+
+    popupGirasolEl.addEventListener(
+
+        "click",
+
+        function(){
+
+            popupGirasolEl.classList.remove(
+                "activo"
+            );
+
+        }
+
+    );
+
+
+    window.addEventListener(
+        "resize",
+        onWindowResize
+    );
+
+}
+
+
+/* =========================================================
+   RAYCASTER
+========================================================= */
+
+function manejarRaycast(e){
+
+    if(
+        e.target !== renderer.domElement
+    ){
+
+        return;
+
+    }
+
+
+    mouse.x =
+        (e.clientX /
+        window.innerWidth)
+        * 2 -
+        1;
+
+
+    mouse.y =
+        -(e.clientY /
+        window.innerHeight)
+        * 2 +
+        1;
+
+
+    raycaster.setFromCamera(
+        mouse,
+        camera
+    );
+
+
+    const intersecciones =
+        raycaster.intersectObjects(
+            elementosFlorales,
+            true
+        );
+
+
+    if(
+        intersecciones.length === 0
+    ){
+
+        return;
+
+    }
+
+
+    let objeto =
+        intersecciones[0].object;
+
+
+    while(
+        objeto.parent &&
+        !objeto.userData.frase
+    ){
+
+        objeto =
+            objeto.parent;
+
+    }
+
+
+    if(
+        objeto &&
+        objeto.userData &&
+        objeto.userData.frase
+    ){
+
+        popupTextoEl.textContent =
+            objeto.userData.frase;
+
+
+        popupEmojiEl.textContent =
+            objeto.userData.emoji ||
+            "🌻";
+
+
+        popupGirasolEl.classList.add(
+            "activo"
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   RESIZE
+========================================================= */
+
+function onWindowResize(){
+
+    if(!camera || !renderer)
+        return;
+
+
+    camera.aspect =
+        window.innerWidth /
+        window.innerHeight;
+
+
+    camera.updateProjectionMatrix();
+
+
+    renderer.setSize(
+
+        window.innerWidth,
+        window.innerHeight
 
     );
 
 }
 
 
-/* =====================================================
-   DISTANCIA ENTRE DOS DEDOS
-===================================================== */
-
-function distancia(a,b){
-
-    const dx=
-    a.clientX-
-    b.clientX;
-
-
-    const dy=
-    a.clientY-
-    b.clientY;
-
-
-    return Math.sqrt(
-        dx*dx+
-        dy*dy
-    );
-
-}
-
-
-/* =====================================================
+/* =========================================================
    ANIMACIÓN
-===================================================== */
+========================================================= */
+
+const reloj =
+    new THREE.Clock();
+
 
 function animar(){
-
 
     requestAnimationFrame(
         animar
     );
 
 
-    /* -----------------------------------------------
-       GIRO AUTOMÁTICO
-    ----------------------------------------------- */
+    const tiempo =
+        reloj.getElapsedTime();
 
-    if(
-        autoRotacion
-    ){
+
+    /* Rotación muy lenta */
+
+    if(universo){
 
         universo.rotation.y +=
-        .0025;
+            .00045;
 
     }
 
 
-    /* -----------------------------------------------
-       FLORES
-    ----------------------------------------------- */
+    /* Saturno */
 
-    flores.forEach(
+    if(saturnoGrupo){
+
+        saturnoGrupo.rotation.y +=
+            .006;
+
+    }
+
+
+    /* Flores flotando */
+
+    elementosFlorales.forEach(
 
         function(flor){
 
-            flor.userData.angulo +=
-            flor.userData.velocidad;
-
-
-            const a=
-            flor.userData.angulo;
-
-            const r=
-            flor.userData.radio;
-
-
-            flor.position.x=
-            Math.cos(a)*r;
-
-
-            flor.position.z=
-            Math.sin(a)*r;
+            if(!flor.userData)
+                return;
 
 
             flor.position.y +=
-            Math.sin(
-                a+
-                flor.userData.fase
-            )*.002;
 
+                Math.sin(
 
-            flor.rotation.z +=
-            .003;
+                    tiempo *
+                    flor.userData.velocidad
+                    +
+                    flor.userData.flotar
+
+                )
+                *
+                .0008;
+
 
         }
 
     );
 
 
-    /* -----------------------------------------------
-       MENSAJES
-    ----------------------------------------------- */
+    /* Mantener flores visibles */
 
-    mensajes.forEach(
+    if(camera){
 
-        function(texto){
+        orientarFloresHaciaCamara();
 
-            texto.userData.angulo +=
-            texto.userData.velocidad;
+    }
 
 
-            const a=
-            texto.userData.angulo;
+    /* Pétalos cayendo */
 
-            const r=
-            texto.userData.radio;
+    if(petalosSistema){
 
-
-            texto.position.x=
-            Math.cos(a)*r;
-
-
-            texto.position.z=
-            Math.sin(a)*r;
+        const posiciones =
+            petalosSistema.geometry
+            .attributes
+            .position
+            .array;
 
 
-            texto.position.y +=
-            Math.sin(a)*.0015;
+        for(
+            let i=1;
+            i<posiciones.length;
+            i+=3
+        ){
+
+            posiciones[i] -=
+                .018;
+
+
+            if(
+                posiciones[i] < -10
+            ){
+
+                posiciones[i] =
+                    10;
+
+            }
 
         }
 
-    );
+
+        petalosSistema
+            .geometry
+            .attributes
+            .position
+            .needsUpdate =
+            true;
+
+    }
 
 
-    /* -----------------------------------------------
-       ESTRELLAS
-    ----------------------------------------------- */
+    /* Estrellas */
 
-    estrellas.rotation.y +=
-    .00015;
+    if(estrellasPuntos){
 
+        estrellasPuntos.rotation.y +=
+            .00008;
 
-    /* -----------------------------------------------
-       RENDER
-    ----------------------------------------------- */
+    }
+
 
     renderer.render(
         scene,
@@ -1770,54 +3997,6 @@ function animar(){
     );
 
 }
-
-
-/* =====================================================
-   REDIMENSIONAR
-===================================================== */
-
-window.addEventListener(
-
-    "resize",
-
-    function(){
-
-        camera.aspect=
-        window.innerWidth/
-        window.innerHeight;
-
-
-        camera.updateProjectionMatrix();
-
-
-        renderer.setSize(
-
-            window.innerWidth,
-
-            window.innerHeight
-
-        );
-
-    }
-
-);
-
-
-/* =====================================================
-   REINICIAR
-===================================================== */
-
-boton.addEventListener(
-
-    "click",
-
-    function(){
-
-        location.reload();
-
-    }
-
-);
 
 </script>
 
