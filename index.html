@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Un regalo para ti</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f7ebe1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Pantalla 1: La Carta Cerrada */
+        #pantalla-carta {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        #pantalla-carta:hover {
+            transform: scale(1.05);
+        }
+        .sobre {
+            font-size: 120px;
+            animation: flotar 2s infinite ease-in-out;
+            line-height: 1;
+        }
+        .indicacion {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #8b5e3c;
+            font-weight: bold;
+            background-color: rgba(255,255,255,0.7);
+            padding: 8px 15px;
+            border-radius: 20px;
+        }
+
+        /* Pantalla 2: El Universo de Flores (Oculto al inicio) */
+        #pantalla-flores {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, #fffbe0 0%, #fceea7 100%);
+            overflow: hidden;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Mensaje Final */
+        .mensaje {
+            background: rgba(255, 255, 255, 0.85);
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 450px;
+            width: 85%;
+            z-index: 10;
+            border: 2px solid #ffd166;
+            animation: aparecerMensaje 1.5s forwards ease-out;
+        }
+        .mensaje h1 {
+            color: #b57c00;
+            margin-top: 0;
+        }
+        .mensaje p {
+            color: #4a3b1a;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        /* Lluvia de Flores Amarillas */
+        .flor-amarilla {
+            position: absolute;
+            font-size: 24px;
+            user-select: none;
+            pointer-events: none;
+            animation: caer linear infinite;
+            z-index: 1;
+        }
+
+        /* Animaciones */
+        @keyframes flotar {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        @keyframes aparecerMensaje {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes caer {
+            0% {
+                transform: translateY(-50px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(105vh) rotate(360deg);
+                opacity: 0.3;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PANTALLA 1: LA CARTA -->
+    <div id="pantalla-carta" onclick="abrirCarta()">
+        <div class="sobre">✉️</div>
+        <div class="indicacion">Tienes una carta. Haz clic para abrirla ✨</div>
+    </div>
+
+    <!-- PANTALLA 2: EL UNIVERSO DE FLORES -->
+    <div id="pantalla-flores">
+        <div class="mensaje">
+            <h1>🌻 Un mar de flores amarillas para ti 🌻</h1>
+            <p>Te envío este universo amarillo interactivo para recordarte lo mucho que vales y desearte un día increíble. Que tu vida esté siempre iluminada, llena de felicidad, energía positiva y momentos hermosos como estos. ¡Nunca dejes de sonreír! ✨</p>
+        </div>
+    </div>
+
+    <script>
+        function abrirCarta() {
+            // Ocultar carta y mostrar flores
+            document.getElementById('pantalla-carta').style.display = 'none';
+            const pantallaFlores = document.getElementById('pantalla-flores');
+            pantallaFlores.style.display = 'flex';
+
+            // Tipos de flores amarillas y destellos
+            const emojisFlores = ['🌻', '🌼', '💛', '✨'];
+
+            // Crear lluvia masiva de flores (universo interactivo)
+            for (let i = 0; i < 80; i++) {
+                setTimeout(() => {
+                    const flor = document.createElement('div');
+                    flor.classList.add('flor-amarilla');
+                    
+                    // Elegir emoji aleatorio
+                    flor.innerText = emojisFlores[Math.floor(Math.random() * emojisFlores.length)];
+                    
+                    // Posición horizontal aleatoria
+                    flor.style.left = Math.random() * 100 + 'vw';
+                    
+                    // Tamaños aleatorios
+                    flor.style.fontSize = (Math.random() * 20 + 20) + 'px';
+                    
+                    // Velocidad de caída aleatoria (entre 4 y 8 segundos)
+                    flor.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                    
+                    pantallaFlores.appendChild(flor);
+                }, i * 150); // Aparecen de forma escalonada
+            }
+        }
+    </script>
+</body>
+</html>
