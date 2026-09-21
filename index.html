@@ -15,7 +15,7 @@
             height: 100vh;
             overflow: hidden;
             font-family: 'Segoe UI', system-ui, sans-serif;
-            perspective: 1000px; /* Activa la perspectiva 3D global */
+            perspective: 1000px;
         }
 
         /* Pantalla 1: La Carta Flotante */
@@ -25,11 +25,10 @@
             align-items: center;
             cursor: pointer;
             z-index: 100;
-            transform-style: preserve-3d;
             transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         #pantalla-carta:hover {
-            transform: scale(1.1) rotateY(10deg);
+            transform: scale(1.1);
         }
         .sobre {
             font-size: 140px;
@@ -64,10 +63,9 @@
             overflow: hidden;
             justify-content: center;
             align-items: center;
-            transform-style: preserve-3d;
         }
 
-        /* Fondo de Estrellas Fijas con Profundidad */
+        /* Fondo de Estrellas */
         .estrellas {
             position: absolute;
             width: 100%;
@@ -81,7 +79,7 @@
             z-index: 1;
         }
 
-        /* El Anillo de Energía de la Galaxia en 3D */
+        /* El Anillo de Energía en 3D */
         .anillo-3d {
             position: absolute;
             width: 340px;
@@ -91,7 +89,7 @@
             box-shadow: 0 0 50px #ffaa00, inset 0 0 30px #ff3300;
             filter: blur(1px);
             z-index: 2;
-            transform: rotateX(65deg) rotateY(15deg); /* Tumbado en el espacio */
+            transform: rotateX(65deg) rotateY(15deg);
             animation: rotarAnillo 15s linear infinite;
         }
 
@@ -108,7 +106,7 @@
             align-items: center;
             box-shadow: 0 0 40px rgba(255, 204, 0, 0.4);
             border: 2px solid #ffcc00;
-            animation: escalaNucleo 2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            animation: escalaNucleo 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
 
         .mensaje-interno {
@@ -129,7 +127,7 @@
             margin: 0;
         }
 
-        /* Flores que Caen y Orbitan en el Espacio */
+        /* Flores que Caen */
         .elemento-espacial {
             position: absolute;
             user-select: none;
@@ -139,29 +137,28 @@
             filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.7));
         }
 
-        /* Animaciones Mágicas */
+        /* Animaciones */
         @keyframes flotarCarta {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-12px) rotate(2deg); }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
         }
         @keyframes rotarAnillo {
             from { transform: rotateX(65deg) rotateY(15deg) rotate(0deg); }
             to { transform: rotateX(65deg) rotateY(15deg) rotate(360deg); }
         }
         @keyframes escalaNucleo {
-            from { transform: scale(0) rotate(-180deg); opacity: 0; }
-            to { transform: scale(1) rotate(0deg); opacity: 1; }
+            from { transform: scale(0); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
         @keyframes lluviaEspacial {
             0% {
-                transform: translateY(-10vh) translateX(0) translateZ(-400px) rotate(0deg);
+                transform: translateY(-10vh) scale(0.5) rotate(0deg);
                 opacity: 0;
             }
             10% { opacity: 1; }
             90% { opacity: 1; }
             100% {
-                /* El translateZ genera el efecto óptico de que avanzan hacia la pantalla en 3D */
-                transform: translateY(110vh) translateX(100px) translateZ(400px) rotate(720deg);
+                transform: translateY(110vh) scale(1.3) rotate(360deg);
                 opacity: 0;
             }
         }
@@ -196,28 +193,22 @@
 
             const objetos = ['🌻', '🌼', '✨', '💛', '🌟'];
 
-            // Creamos 90 elementos distribuidos aleatoriamente en el espacio 3D
-            for (let i = 0; i < 90; i++) {
+            for (let i = 0; i < 80; i++) {
                 setTimeout(() => {
                     const el = document.createElement('div');
                     el.classList.add('elemento-espacial');
                     el.innerText = objetos[Math.floor(Math.random() * objetos.length)];
                     
-                    // Dispersión horizontal
                     el.style.left = Math.random() * 100 + 'vw';
                     
-                    // Tamaños aleatorios
                     const tamano = Math.random() * 25 + 15;
                     el.style.fontSize = tamano + 'px';
                     
-                    // Tiempos de caída desordenados para dar profundidad real
-                    el.style.animationDuration = (Math.random() * 4 + 3)s;
-                    
-                    // Retraso de animación personalizado
-                    el.style.animationDelay = (Math.random() * 2) + 's';
+                    // CORREGIDO: Añadida la propiedad correcta de tiempo 's'
+                    el.style.animationDuration = (Math.random() * 3 + 3) + 's';
 
                     contenedor.appendChild(el);
-                }, i * 80);
+                }, i * 100);
             }
         }
     </script>
