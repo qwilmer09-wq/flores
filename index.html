@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Un regalo para ti</title>
+    <title>Un regalo espacial para ti</title>
     <style>
         body {
             margin: 0;
             padding: 0;
-            background-color: #f7ebe1;
+            background-color: #0b0f19;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -24,26 +24,32 @@
             align-items: center;
             cursor: pointer;
             transition: transform 0.3s ease;
+            z-index: 20;
         }
         #pantalla-carta:hover {
             transform: scale(1.05);
         }
         .sobre {
-            font-size: 120px;
+            font-size: 130px;
             animation: flotar 2s infinite ease-in-out;
             line-height: 1;
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.2));
         }
         .indicacion {
             margin-top: 20px;
-            font-size: 18px;
-            color: #8b5e3c;
+            font-size: 16px;
+            color: #fff;
+            letter-spacing: 1px;
             font-weight: bold;
-            background-color: rgba(255,255,255,0.7);
-            padding: 8px 15px;
-            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            padding: 10px 20px;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: pulso 1.5s infinite;
         }
 
-        /* Pantalla 2: El Universo de Flores (Oculto al inicio) */
+        /* Pantalla 2: El Universo de Flores Amarillas (Estilo Galaxia) */
         #pantalla-flores {
             display: none;
             position: absolute;
@@ -51,36 +57,58 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle, #fffbe0 0%, #fceea7 100%);
+            background: radial-gradient(circle at center, #1a103c 0%, #050510 100%);
             overflow: hidden;
             justify-content: center;
             align-items: center;
             text-align: center;
         }
 
-        /* Mensaje Final */
-        .mensaje {
-            background: rgba(255, 255, 255, 0.85);
-            padding: 30px;
-            border-radius: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            max-width: 450px;
-            width: 85%;
-            z-index: 10;
-            border: 2px solid #ffd166;
-            animation: aparecerMensaje 1.5s forwards ease-out;
-        }
-        .mensaje h1 {
-            color: #b57c00;
-            margin-top: 0;
-        }
-        .mensaje p {
-            color: #4a3b1a;
-            font-size: 18px;
-            line-height: 1.6;
+        /* El Anillo Dorado Resplandeciente del Centro */
+        .anillo-galaxia {
+            position: absolute;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: transparent;
+            box-shadow: 0 0 60px #ffcc00, inset 0 0 40px #ff9900;
+            animation: rotarAnillo 10s linear infinite;
+            z-index: 2;
         }
 
-        /* Lluvia de Flores Amarillas */
+        /* Contenedor del Mensaje Central */
+        .mensaje {
+            background: rgba(5, 5, 15, 0.75);
+            backdrop-filter: blur(8px);
+            padding: 35px 25px;
+            border-radius: 50%; /* Forma circular para encajar en el anillo */
+            width: 260px;
+            height: 260px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+            animation: aparecerMensaje 1.8s forwards ease-out;
+        }
+        
+        /* Texto Brillante Neon */
+        .mensaje h1 {
+            color: #fff;
+            font-size: 20px;
+            margin: 0 0 10px 0;
+            text-shadow: 0 0 10px #ffcc00, 0 0 20px #ff9900;
+        }
+        .mensaje p {
+            color: #f0e6ff;
+            font-size: 13px;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Flores y Estrellas Fugaces */
         .flor-amarilla {
             position: absolute;
             font-size: 24px;
@@ -88,6 +116,7 @@
             pointer-events: none;
             animation: caer linear infinite;
             z-index: 1;
+            filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
         }
 
         /* Animaciones */
@@ -95,68 +124,74 @@
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-15px); }
         }
+        @keyframes pulso {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+        @keyframes rotarAnillo {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
         @keyframes aparecerMensaje {
-            from { opacity: 0; transform: scale(0.8); }
+            from { opacity: 0; transform: scale(0.5); }
             to { opacity: 1; transform: scale(1); }
         }
         @keyframes caer {
             0% {
-                transform: translateY(-50px) rotate(0deg);
-                opacity: 1;
+                transform: translateY(-50px) translateX(0) rotate(0deg);
+                opacity: 0;
             }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
             100% {
-                transform: translateY(105vh) rotate(360deg);
-                opacity: 0.3;
+                transform: translateY(105vh) translateX(50px) rotate(360deg);
+                opacity: 0;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- PANTALLA 1: LA CARTA -->
+    <!-- PANTALLA 1: LA CARTA EN EL ESPACIO -->
     <div id="pantalla-carta" onclick="abrirCarta()">
         <div class="sobre">✉️</div>
-        <div class="indicacion">Tienes una carta. Haz clic para abrirla ✨</div>
+        <div class="indicacion">Haz clic para abrir tu sorpresa ✨</div>
     </div>
 
-    <!-- PANTALLA 2: EL UNIVERSO DE FLORES -->
+    <!-- PANTALLA 2: EL UNIVERSO DE FLORES AMARILLAS -->
     <div id="pantalla-flores">
+        <div class="anillo-galaxia"></div>
         <div class="mensaje">
-            <h1>🌻 Un mar de flores amarillas para ti 🌻</h1>
-            <p>Te envío este universo amarillo interactivo para recordarte lo mucho que vales y desearte un día increíble. Que tu vida esté siempre iluminada, llena de felicidad, energía positiva y momentos hermosos como estos. ¡Nunca dejes de sonreír! ✨</p>
+            <h1>¡Feliz día de las Flores Amarillas! 🌻</h1>
+            <p>Te envío este pequeño universo brillante para recordarte lo especial que eres. Que tu vida esté siempre iluminada de alegría y momentos hermosos. ✨</p>
         </div>
     </div>
 
     <script>
         function abrirCarta() {
-            // Ocultar carta y mostrar flores
             document.getElementById('pantalla-carta').style.display = 'none';
             const pantallaFlores = document.getElementById('pantalla-flores');
             pantallaFlores.style.display = 'flex';
 
-            // Tipos de flores amarillas y destellos
-            const emojisFlores = ['🌻', '🌼', '💛', '✨'];
+            // Emojis temáticos del universo amarillo
+            const emojisFlores = ['🌻', '🌼', '✨', '💛', '⭐'];
 
-            // Crear lluvia masiva de flores (universo interactivo)
-            for (let i = 0; i < 80; i++) {
+            // Generamos la lluvia cósmica de flores
+            for (let i = 0; i < 100; i++) {
                 setTimeout(() => {
                     const flor = document.createElement('div');
                     flor.classList.add('flor-amarilla');
                     
-                    // Elegir emoji aleatorio
                     flor.innerText = emojisFlores[Math.floor(Math.random() * emojisFlores.length)];
-                    
-                    // Posición horizontal aleatoria
                     flor.style.left = Math.random() * 100 + 'vw';
+                    flor.style.fontSize = (Math.random() * 22 + 16) + 'px';
                     
-                    // Tamaños aleatorios
-                    flor.style.fontSize = (Math.random() * 20 + 20) + 'px';
-                    
-                    // Velocidad de caída aleatoria (entre 4 y 8 segundos)
-                    flor.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                    // Velocidades variadas para dar profundidad de espacio
+                    flor.style.animationDuration = (Math.random() * 5 + 3) + 's';
                     
                     pantallaFlores.appendChild(flor);
-                }, i * 150); // Aparecen de forma escalonada
+                }, i * 120);
             }
         }
     </script>
