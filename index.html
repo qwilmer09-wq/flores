@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galaxia de Flores Amarillas</title>
+    <title>Galaxia Cósmica de Flores Amarillas</title>
     <style>
         * {
             box-sizing: border-box;
@@ -11,7 +11,7 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #020206;
+            background-color: #010104;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -35,7 +35,7 @@
         .sobre {
             font-size: 130px;
             line-height: 1;
-            filter: drop-shadow(0 10px 25px rgba(255, 215, 0, 0.3));
+            filter: drop-shadow(0 10px 25px rgba(255, 215, 0, 0.4));
             animation: flotarCarta 2.5s infinite ease-in-out;
             user-select: none;
         }
@@ -55,7 +55,7 @@
             user-select: none;
         }
 
-        /* PANTALLA 2: EL UNIVERSO CÓSMICO (ESTILO TIKTOK) */
+        /* PANTALLA 2: LA GALAXIA INFINITA DE FLORES */
         #pantalla-flores {
             display: none;
             position: absolute;
@@ -63,107 +63,64 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at center, #0a061c 0%, #010103 100%);
+            background: radial-gradient(circle at center, #0f082c 0%, #010105 100%);
             overflow: hidden;
-            justify-content: center;
-            align-items: center;
         }
 
-        /* Fondo de Estrellas del Universo */
-        .estrellas-espaciales {
+        /* Capa de Estrellas de Fondo */
+        .estrellas-fondo {
             position: absolute;
             width: 100%;
             height: 100%;
             background-image: 
                 radial-gradient(white, rgba(255,255,255,.2) 1.5px, transparent 40px),
-                radial-gradient(rgba(255,255,255,.15) 1px, transparent 30px);
+                radial-gradient(rgba(255,204,0,.2) 1px, transparent 30px);
             background-size: 300px 300px, 200px 200px;
-            background-position: 0 0, 50px 50px;
-            opacity: 0.6;
+            opacity: 0.7;
             z-index: 1;
         }
 
-        /* EL NÚCLEO OSCURO CON ANILLO DE NEÓN AMARILLO */
-        .universo-centro {
-            position: absolute;
-            width: 290px;
-            height: 290px;
-            background: #040307; /* Centro negro profundo */
-            border-radius: 50%;
-            z-index: 3;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            /* Anillo resplandeciente amarillo del video */
-            box-shadow: 0 0 40px #ffcc00, 0 0 80px #ff9900, inset 0 0 20px rgba(255,204,0,0.3);
-            border: 2px solid rgba(255, 204, 0, 0.6);
-            animation: zoomUniverso 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
-        }
-
-        /* LETRERO SUPERIOR FLOTANTE */
-        .titulo-galaxia {
-            position: absolute;
-            top: 10%;
-            color: #ffffff;
-            font-size: 24px;
-            font-weight: 800;
-            text-align: center;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            z-index: 5;
-            text-shadow: 0 0 8px #ffcc00, 0 0 20px #ff9900;
-            width: 90%;
-            animation: aparecerTexto 2s ease-out forwards;
-        }
-
-        /* DEDICATORIA INTERNA */
-        .texto-central {
-            text-align: center;
-            max-width: 230px;
-            padding: 15px;
-            z-index: 6;
-            animation: aparecerTexto 2.6s ease-out forwards;
-        }
-        .texto-central p {
-            color: #ffffff;
-            font-size: 13.5px;
-            font-weight: 500;
-            line-height: 1.6;
-            margin: 0;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
-        }
-
-        /* LLUVIA CÓSMICA DE GIRASOLES */
-        .girasol-volador {
+        /* ELEMENTOS DE LA GALAXIA: FLORES, RAMOS Y DESTELLOS */
+        .objeto-galaxia {
             position: absolute;
             user-select: none;
             pointer-events: none;
-            z-index: 2; /* Caen por detrás del anillo oscuro */
-            animation: caídaCósmica linear infinite;
+            z-index: 2;
+            animation: orbitaCosmica linear infinite;
+            filter: drop-shadow(0 0 12px rgba(255, 204, 0, 0.85));
         }
 
-        /* ANIMACIONES */
+        /* FRASES VOLADORAS ESTILO NEÓN */
+        .frase-galaxia {
+            position: absolute;
+            color: #ffffff;
+            font-weight: 700;
+            white-space: nowrap;
+            user-select: none;
+            pointer-events: none;
+            z-index: 3;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 0 8px #ffcc00, 0 0 20px #ff9900, 0 0 30px #ff6600;
+            animation: orbitaCosmica linear infinite;
+        }
+
+        /* ANIMACIONES ESPACIALES */
         @keyframes flotarCarta {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-15px); }
         }
-        @keyframes zoomUniverso {
-            from { transform: scale(0); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-        @keyframes aparecerTexto {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes caídaCósmica {
+
+        /* Movimiento combinado: Avanzan, rotan en 3D y giran en su propio eje */
+        @keyframes orbitaCosmica {
             0% {
-                transform: translateY(-60px) rotate(0deg) scale(0.7);
+                transform: translate(var(--x-inicio), -10vh) rotate(0deg) scale(0.4);
                 opacity: 0;
             }
-            15% { opacity: 1; }
-            85% { opacity: 1; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
             100% {
-                transform: translateY(105vh) rotate(360deg) scale(1.1);
+                transform: translate(var(--x-fin), 110vh) rotate(360deg) scale(1.3);
                 opacity: 0;
             }
         }
@@ -174,19 +131,12 @@
     <!-- PANTALLA 1 -->
     <div id="pantalla-carta">
         <div class="sobre">✉️</div>
-        <div class="indicacion">Toca para abrir tu sorpresa ✨</div>
+        <div class="indicacion">Toca para abrir tu galaxia ✨</div>
     </div>
 
-    <!-- PANTALLA 2: EL UNIVERSO DE FLORES -->
+    <!-- PANTALLA 2 -->
     <div id="pantalla-flores">
-        <div class="estrellas-espaciales"></div>
-        <div class="titulo-galaxia">Feliz Día de las Flores Amarillas</div>
-        
-        <div class="universo-centro">
-            <div class="texto-central">
-                <p>Un universo entero lleno de estrellas y girasoles diseñado especialmente para ti. Para recordarte lo valiosa, única e increíble que eres. ¡Nunca dejes de brillar! 🌻✨</p>
-            </div>
-        </div>
+        <div class="estrellas-fondo"></div>
     </div>
 
     <script>
@@ -195,29 +145,67 @@
         disparador.addEventListener('click', function() {
             disparador.style.display = 'none';
             
-            const pantallaUniverso = document.getElementById('pantalla-flores');
-            pantallaUniverso.style.display = 'flex';
+            const galaxia = document.getElementById('pantalla-flores');
+            galaxia.style.display = 'block';
 
-            // Emojis exactos para la lluvia cósmica
-            const cosmosElementos = ['🌻', '🌻', '🌼', '✨', '💛', '⭐'];
-
-            for (let i = 0; i < 85; i++) {
+            // 1. GENERACIÓN DE FLORES, DESTELLOS Y RAMOS COMO EN EL VIDEO
+            const iconosFlores = ['🌻', '💐', '🌼', '✨', '💛', '🌟', '💐', '🌻'];
+            
+            for (let i = 0; i < 110; i++) {
                 setTimeout(() => {
                     const item = document.createElement('div');
-                    item.classList.add('girasol-volador');
-                    item.innerText = cosmosElementos[Math.floor(Math.random() * cosmosElementos.length)];
+                    item.classList.add('objeto-galaxia');
+                    item.innerText = iconosFlores[Math.floor(Math.random() * iconosFlores.length)];
                     
-                    item.style.left = Math.random() * 100 + 'vw';
+                    // Configuración de rutas espaciales cruzadas
+                    const xInicio = Math.random() * 100;
+                    const xFin = xInicio + (Math.random() * 30 - 15); // Desplazamiento oblicuo
                     
-                    const escala = Math.random() * 24 + 16;
-                    item.style.fontSize = escala + 'px';
-                    item.style.animationDuration = (Math.random() * 3.5 + 3.5) + 's';
+                    item.style.setProperty('--x-inicio', xInicio + 'vw');
+                    item.style.setProperty('--x-fin', xFin + 'vw');
+                    item.style.left = '0';
                     
-                    // Efecto de brillo de neón en cada flor/estrella cayendo
-                    item.style.filter = 'drop-shadow(0 0 8px rgba(255,204,0,0.8))';
+                    // Tamaños variados para profundidad espacial
+                    const tamano = Math.random() * 28 + 18;
+                    item.style.fontSize = tamano + 'px';
+                    
+                    // Velocidades en órbita
+                    item.style.animationDuration = (Math.random() * 4 + 4) + 's';
 
-                    pantallaUniverso.appendChild(item);
-                }, i * 100);
+                    galaxia.appendChild(item);
+                }, i * 70); // Salen de manera continua y masiva
+            }
+
+            // 2. GENERACIÓN DE LAS FRASES QUE VAN GIRANDO
+            const frasesTiktok = [
+                "Feliz día de las Flores Amarillas 🌻",
+                "Eres mi persona favorita ✨",
+                "Nunca dejes de brillar 💛",
+                "Te amo un universo entero 🌟",
+                "Un detalle especial para ti 💐",
+                "Siempre juntos 💕",
+                "Iluminas mi mundo 🌼"
+            ];
+
+            for (let j = 0; j < 25; j++) {
+                setTimeout(() => {
+                    const frase = document.createElement('div');
+                    frase.classList.add('frase-galaxia');
+                    frase.innerText = frasesTiktok[j % frasesTiktok.length];
+                    
+                    const xInicio = Math.random() * 80;
+                    const xFin = xInicio + (Math.random() * 20 - 10);
+                    
+                    frase.style.setProperty('--x-inicio', xInicio + 'vw');
+                    frase.style.setProperty('--x-fin', xFin + 'vw');
+                    frase.style.left = '0';
+                    
+                    // Tamaños de texto adaptables para móviles
+                    frase.style.fontSize = (Math.random() * 5 + 14) + 'px';
+                    frase.style.animationDuration = (Math.random() * 3 + 5) + 's';
+
+                    galaxia.appendChild(frase);
+                }, j * 400); // Aparecen de forma escalonada entre la lluvia cósmica
             }
         });
     </script>
