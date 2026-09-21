@@ -11,7 +11,7 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #030208;
+            background-color: #020206;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -20,7 +20,7 @@
             font-family: 'Segoe UI', system-ui, sans-serif;
         }
 
-        /* PANTALLA 1: EL SOBRE PARA HACER CLIC */
+        /* PANTALLA 1: EL SOBRE INTERACTIVO */
         #pantalla-carta {
             display: flex;
             flex-direction: column;
@@ -35,7 +35,7 @@
         .sobre {
             font-size: 130px;
             line-height: 1;
-            filter: drop-shadow(0 10px 20px rgba(255, 215, 0, 0.4));
+            filter: drop-shadow(0 10px 25px rgba(255, 215, 0, 0.3));
             animation: flotarCarta 2.5s infinite ease-in-out;
             user-select: none;
         }
@@ -46,96 +46,100 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             font-weight: bold;
-            background: rgba(255, 255, 255, 0.07);
+            background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(8px);
             padding: 12px 25px;
             border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 0 15px rgba(255,255,255,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 15px rgba(255,255,255,0.05);
             user-select: none;
         }
 
-        /* PANTALLA 2: LA GALAXIA ESPACIAL (OCULTA) */
+        /* PANTALLA 2: EL UNIVERSO CÓSMICO (ESTILO TIKTOK) */
         #pantalla-flores {
-            display: none; /* Se activa con JS */
+            display: none;
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at center, #160a3a 0%, #020107 100%);
+            background: radial-gradient(circle at center, #0a061c 0%, #010103 100%);
             overflow: hidden;
             justify-content: center;
             align-items: center;
         }
 
-        /* Fondo Cósmico de Estrellas */
-        .estrellas {
+        /* Fondo de Estrellas del Universo */
+        .estrellas-espaciales {
             position: absolute;
             width: 100%;
             height: 100%;
             background-image: 
-                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
-                radial-gradient(rgba(255,215,0,.3), rgba(255,215,0,.05) 1px, transparent 30px);
-            background-size: 400px 400px, 250px 250px;
-            opacity: 0.5;
+                radial-gradient(white, rgba(255,255,255,.2) 1.5px, transparent 40px),
+                radial-gradient(rgba(255,255,255,.15) 1px, transparent 30px);
+            background-size: 300px 300px, 200px 200px;
+            background-position: 0 0, 50px 50px;
+            opacity: 0.6;
             z-index: 1;
         }
 
-        /* EL SOL/ESFERA DORADA 3D ASCENDENTE */
-        .sol-3d {
+        /* EL NÚCLEO OSCURO CON ANILLO DE NEÓN AMARILLO */
+        .universo-centro {
             position: absolute;
-            width: 280px;
-            height: 280px;
-            background: radial-gradient(circle at 35% 35%, #ffffff 0%, #ffea6c 30%, #ffb600 70%, #965300 100%);
+            width: 290px;
+            height: 290px;
+            background: #040307; /* Centro negro profundo */
             border-radius: 50%;
-            z-index: 2;
-            box-shadow: 0 0 60px #ffcc00, 0 0 120px #ff6600, inset -10px -10px 30px rgba(0,0,0,0.5);
-            animation: ascenderSol 2s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
+            z-index: 3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Anillo resplandeciente amarillo del video */
+            box-shadow: 0 0 40px #ffcc00, 0 0 80px #ff9900, inset 0 0 20px rgba(255,204,0,0.3);
+            border: 2px solid rgba(255, 204, 0, 0.6);
+            animation: zoomUniverso 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
         }
 
-        /* LETRERO DE NEÓN SUPERIOR */
-        .letrero-neon {
+        /* LETRERO SUPERIOR FLOTANTE */
+        .titulo-galaxia {
             position: absolute;
-            top: 12%;
+            top: 10%;
             color: #ffffff;
             font-size: 24px;
-            font-weight: 900;
+            font-weight: 800;
             text-align: center;
             text-transform: uppercase;
             letter-spacing: 1px;
             z-index: 5;
-            text-shadow: 0 0 10px #ffcc00, 0 0 20px #ffaa00, 0 0 40px #ff3300;
+            text-shadow: 0 0 8px #ffcc00, 0 0 20px #ff9900;
             width: 90%;
             animation: aparecerTexto 2s ease-out forwards;
         }
 
-        /* TEXTO DENTRO DEL SOL */
-        .dedicatoria {
-            position: absolute;
-            z-index: 5;
+        /* DEDICATORIA INTERNA */
+        .texto-central {
             text-align: center;
-            max-width: 220px;
-            padding: 10px;
-            pointer-events: none;
-            animation: aparecerTexto 2.5s ease-out forwards;
+            max-width: 230px;
+            padding: 15px;
+            z-index: 6;
+            animation: aparecerTexto 2.6s ease-out forwards;
         }
-        .dedicatoria p {
+        .texto-central p {
             color: #ffffff;
-            font-size: 14px;
-            font-weight: 600;
+            font-size: 13.5px;
+            font-weight: 500;
             line-height: 1.6;
             margin: 0;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
         }
 
-        /* LLUVIA DE FLORES Y ELEMENTOS */
-        .flor-girasol {
+        /* LLUVIA CÓSMICA DE GIRASOLES */
+        .girasol-volador {
             position: absolute;
             user-select: none;
             pointer-events: none;
-            z-index: 4;
-            animation: caerFlor linear infinite;
+            z-index: 2; /* Caen por detrás del anillo oscuro */
+            animation: caídaCósmica linear infinite;
         }
 
         /* ANIMACIONES */
@@ -143,23 +147,23 @@
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-15px); }
         }
-        @keyframes ascenderSol {
-            from { transform: translateY(100vh) scale(0.5); opacity: 0; }
-            to { transform: translateY(0) scale(1); opacity: 1; }
+        @keyframes zoomUniverso {
+            from { transform: scale(0); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
         @keyframes aparecerTexto {
-            from { opacity: 0; transform: scale(0.8); }
-            to { opacity: 1; transform: scale(1); }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        @keyframes caerFlor {
+        @keyframes caídaCósmica {
             0% {
-                transform: translateY(-50px) rotate(0deg) scale(0.6);
+                transform: translateY(-60px) rotate(0deg) scale(0.7);
                 opacity: 0;
             }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
+            15% { opacity: 1; }
+            85% { opacity: 1; }
             100% {
-                transform: translateY(105vh) rotate(360deg) scale(1.2);
+                transform: translateY(105vh) rotate(360deg) scale(1.1);
                 opacity: 0;
             }
         }
@@ -167,64 +171,53 @@
 </head>
 <body>
 
-    <!-- PANTALLA 1: DETONADOR DE LA CARTA -->
+    <!-- PANTALLA 1 -->
     <div id="pantalla-carta">
         <div class="sobre">✉️</div>
         <div class="indicacion">Toca para abrir tu sorpresa ✨</div>
     </div>
 
-    <!-- PANTALLA 2: EFECTO TIKTOK ALEXDEV -->
+    <!-- PANTALLA 2: EL UNIVERSO DE FLORES -->
     <div id="pantalla-flores">
-        <div class="estrellas"></div>
-        <div class="letrero-neon">Feliz Día de las Flores Amarillas</div>
-        <div class="sol-3d"></div>
+        <div class="estrellas-espaciales"></div>
+        <div class="titulo-galaxia">Feliz Día de las Flores Amarillas</div>
         
-        <div class="dedicatoria">
-            <p>Un universo de luz y girasoles para recordarte lo increíble y especial que eres. ¡Nunca dejes de brillar! 🌻✨</p>
+        <div class="universo-centro">
+            <div class="texto-central">
+                <p>Un universo entero lleno de estrellas y girasoles diseñado especialmente para ti. Para recordarte lo valiosa, única e increíble que eres. ¡Nunca dejes de brillar! 🌻✨</p>
+            </div>
         </div>
     </div>
 
     <script>
-        // Corrección absoluta del evento de clic para móviles
-        const botonCarta = document.getElementById('pantalla-carta');
+        const disparador = document.getElementById('pantalla-carta');
         
-        botonCarta.addEventListener('click', function() {
-            // Ocultar pantalla de la carta
-            botonCarta.style.display = 'none';
+        disparador.addEventListener('click', function() {
+            disparador.style.display = 'none';
             
-            // Mostrar la galaxia de flores
-            const galaxia = document.getElementById('pantalla-flores');
-            galaxia.style.display = 'flex';
+            const pantallaUniverso = document.getElementById('pantalla-flores');
+            pantallaUniverso.style.display = 'flex';
 
-            // Emojis temáticos del video
-            const elementos = ['🌻', '🌻', '🌼', '✨', '💛'];
+            // Emojis exactos para la lluvia cósmica
+            const cosmosElementos = ['🌻', '🌻', '🌼', '✨', '💛', '⭐'];
 
-            // Crear ráfaga de flores flotantes
-            for (let i = 0; i < 75; i++) {
+            for (let i = 0; i < 85; i++) {
                 setTimeout(() => {
-                    const flor = document.createElement('div');
-                    flor.classList.add('flor-girasol');
-                    flor.innerText = elementos[Math.floor(Math.random() * elementos.length)];
+                    const item = document.createElement('div');
+                    item.classList.add('girasol-volador');
+                    item.innerText = cosmosElementos[Math.floor(Math.random() * cosmosElementos.length)];
                     
-                    // Posición horizontal aleatoria
-                    flor.style.left = Math.random() * 100 + 'vw';
+                    item.style.left = Math.random() * 100 + 'vw';
                     
-                    // Tamaños dinámicos para simular distancias (Efecto 3D)
-                    const tamano = Math.random() * 26 + 16;
-                    flor.style.fontSize = tamano + 'px';
+                    const escala = Math.random() * 24 + 16;
+                    item.style.fontSize = escala + 'px';
+                    item.style.animationDuration = (Math.random() * 3.5 + 3.5) + 's';
                     
-                    // Velocidades de caída suaves
-                    flor.style.animationDuration = (Math.random() * 4 + 3.5) + 's';
-                    
-                    // Desenfoque sutil en flores lejanas para realismo 3D
-                    if (tamano < 20) {
-                        flor.style.filter = 'blur(1px) drop-shadow(0 0 5px rgba(255,215,0,0.5))';
-                    } else {
-                        flor.style.filter = 'drop-shadow(0 0 8px rgba(255,215,0,0.8))';
-                    }
+                    // Efecto de brillo de neón en cada flor/estrella cayendo
+                    item.style.filter = 'drop-shadow(0 0 8px rgba(255,204,0,0.8))';
 
-                    galaxia.appendChild(flor);
-                }, i * 110);
+                    pantallaUniverso.appendChild(item);
+                }, i * 100);
             }
         });
     </script>
