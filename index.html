@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galaxia Cósmica de Flores Amarillas</title>
+    <title>Galaxia Saturno: Flores Amarillas</title>
     <style>
         * {
             box-sizing: border-box;
@@ -11,13 +11,14 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #010104;
+            background-color: #020205;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             overflow: hidden;
             font-family: 'Segoe UI', system-ui, sans-serif;
+            perspective: 1200px; /* Perspectiva para el efecto 3D */
         }
 
         /* PANTALLA 1: EL SOBRE INTERACTIVO */
@@ -35,7 +36,7 @@
         .sobre {
             font-size: 130px;
             line-height: 1;
-            filter: drop-shadow(0 10px 25px rgba(255, 215, 0, 0.4));
+            filter: drop-shadow(0 10px 25px rgba(255, 204, 0, 0.4));
             animation: flotarCarta 2.5s infinite ease-in-out;
             user-select: none;
         }
@@ -55,7 +56,7 @@
             user-select: none;
         }
 
-        /* PANTALLA 2: LA GALAXIA INFINITA DE FLORES */
+        /* PANTALLA 2: LA GALAXIA SATURNO (ESTILO TIKTOK) */
         #pantalla-flores {
             display: none;
             position: absolute;
@@ -63,65 +64,104 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at center, #0f082c 0%, #010105 100%);
+            background: radial-gradient(circle at center, #0a0518 0%, #010103 100%);
             overflow: hidden;
+            transform-style: preserve-3d;
         }
 
-        /* Capa de Estrellas de Fondo */
-        .estrellas-fondo {
+        /* TÍTULO SUPERIOR DE LA IMAGEN */
+        .titulo-superior {
+            position: absolute;
+            top: 5%;
+            width: 100%;
+            text-align: center;
+            color: #ffffff;
+            font-size: 26px;
+            font-weight: 800;
+            z-index: 20;
+            letter-spacing: 1px;
+            text-shadow: 0 0 12px #ffcc00, 0 0 25px #ffaa00;
+            line-height: 1.4;
+        }
+
+        /* ESPACIO ESTRELLADO TOTAL */
+        .universo-estrellas {
             position: absolute;
             width: 100%;
             height: 100%;
             background-image: 
-                radial-gradient(white, rgba(255,255,255,.2) 1.5px, transparent 40px),
-                radial-gradient(rgba(255,204,0,.2) 1px, transparent 30px);
-            background-size: 300px 300px, 200px 200px;
-            opacity: 0.7;
+                radial-gradient(white, rgba(255,255,255,.3) 1.2px, transparent 30px),
+                radial-gradient(rgba(255,255,255,.2) 1px, transparent 20px);
+            background-size: 250px 250px, 150px 150px;
+            opacity: 0.85;
             z-index: 1;
         }
 
-        /* ELEMENTOS DE LA GALAXIA: FLORES, RAMOS Y DESTELLOS */
-        .objeto-galaxia {
+        /* CONTENEDOR DE LA ORBITA CENTRAL */
+        .sistema-saturno {
             position: absolute;
-            user-select: none;
-            pointer-events: none;
-            z-index: 2;
-            animation: orbitaCosmica linear infinite;
-            filter: drop-shadow(0 0 12px rgba(255, 204, 0, 0.85));
+            top: 55%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            transform-style: preserve-3d;
+            z-index: 5;
+            transform: rotateX(72deg) rotateY(-10deg); /* Inclinación idéntica a tu foto */
         }
 
-        /* FRASES VOLADORAS ESTILO NEÓN */
-        .frase-galaxia {
+        /* EL PLANETA/CENTRO NEGRO */
+        .esfera-negra {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: #020204;
+            border-radius: 50%;
+            transform: translate(-50%, -50%) rotateX(-72deg); /* Cancela inclinación para mantenerse esférico */
+            box-shadow: 0 0 35px rgba(255, 204, 0, 0.4), inset -10px -10px 25px rgba(0,0,0,0.9);
+            z-index: 10;
+            border: 1px solid rgba(255,204,0,0.2);
+        }
+
+        /* EL ANILLO AMARILLO BRILLANTE PLANO */
+        .anillo-plano {
+            position: absolute;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: transparent;
+            border: 22px solid #ffea6c;
+            box-shadow: 0 0 40px #ffcc00, inset 0 0 30px #ff9900;
+            transform: translate(-50%, -50%);
+            z-index: 8;
+            filter: blur(1px);
+        }
+
+        /* ELEMENTOS Y FRASES EN ÓRBITA ROTATIVA */
+        .particula-orbita {
             position: absolute;
             color: #ffffff;
-            font-weight: 700;
+            font-weight: bold;
+            font-size: 13px;
             white-space: nowrap;
-            user-select: none;
-            pointer-events: none;
-            z-index: 3;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-shadow: 0 0 8px #ffcc00, 0 0 20px #ff9900, 0 0 30px #ff6600;
-            animation: orbitaCosmica linear infinite;
+            text-shadow: 0 0 8px #ffcc00, 0 0 15px #ff9900;
+            transform-style: preserve-3d;
+            animation: girarEnOrbita var(--tiempo) linear infinite;
+            z-index: 12;
         }
 
-        /* ANIMACIONES ESPACIALES */
+        /* ANIMACIONES */
         @keyframes flotarCarta {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-15px); }
         }
 
-        /* Movimiento combinado: Avanzan, rotan en 3D y giran en su propio eje */
-        @keyframes orbitaCosmica {
-            0% {
-                transform: translate(var(--x-inicio), -10vh) rotate(0deg) scale(0.4);
-                opacity: 0;
+        /* Efecto matemático para orbitar circularmente en 3D en base al centro */
+        @keyframes girarEnOrbita {
+            from {
+                transform: rotateZ(0deg) translateX(var(--radio)) rotateZ(0deg) rotateX(-72deg);
             }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% {
-                transform: translate(var(--x-fin), 110vh) rotate(360deg) scale(1.3);
-                opacity: 0;
+            to {
+                transform: rotateZ(360deg) translateX(var(--radio)) rotateZ(-360deg) rotateX(-72deg);
             }
         }
     </style>
@@ -136,7 +176,15 @@
 
     <!-- PANTALLA 2 -->
     <div id="pantalla-flores">
-        <div class="estrellas-fondo"></div>
+        <div class="universo-estrellas"></div>
+        <div class="titulo-superior">Feliz día de las<br>Flores Amarillas 🌻</div>
+        
+        <!-- Sistema planetario central -->
+        <div class="sistema-saturno">
+            <div class="esfera-negra"></div>
+            <div class="anillo-plano"></div>
+            <!-- Los elementos interactivos se inyectan aquí con JS -->
+        </div>
     </div>
 
     <script>
@@ -145,67 +193,42 @@
         disparador.addEventListener('click', function() {
             disparador.style.display = 'none';
             
-            const galaxia = document.getElementById('pantalla-flores');
-            galaxia.style.display = 'block';
+            const contenedorGalaxia = document.getElementById('pantalla-flores');
+            contenedorGalaxia.style.display = 'block';
 
-            // 1. GENERACIÓN DE FLORES, DESTELLOS Y RAMOS COMO EN EL VIDEO
-            const iconosFlores = ['🌻', '💐', '🌼', '✨', '💛', '🌟', '💐', '🌻'];
-            
-            for (let i = 0; i < 110; i++) {
-                setTimeout(() => {
-                    const item = document.createElement('div');
-                    item.classList.add('objeto-galaxia');
-                    item.innerText = iconosFlores[Math.floor(Math.random() * iconosFlores.length)];
-                    
-                    // Configuración de rutas espaciales cruzadas
-                    const xInicio = Math.random() * 100;
-                    const xFin = xInicio + (Math.random() * 30 - 15); // Desplazamiento oblicuo
-                    
-                    item.style.setProperty('--x-inicio', xInicio + 'vw');
-                    item.style.setProperty('--x-fin', xFin + 'vw');
-                    item.style.left = '0';
-                    
-                    // Tamaños variados para profundidad espacial
-                    const tamano = Math.random() * 28 + 18;
-                    item.style.fontSize = tamano + 'px';
-                    
-                    // Velocidades en órbita
-                    item.style.animationDuration = (Math.random() * 4 + 4) + 's';
+            const sistema = document.querySelector('.sistema-saturno');
 
-                    galaxia.appendChild(item);
-                }, i * 70); // Salen de manera continua y masiva
-            }
-
-            // 2. GENERACIÓN DE LAS FRASES QUE VAN GIRANDO
-            const frasesTiktok = [
-                "Feliz día de las Flores Amarillas 🌻",
-                "Eres mi persona favorita ✨",
-                "Nunca dejes de brillar 💛",
-                "Te amo un universo entero 🌟",
-                "Un detalle especial para ti 💐",
-                "Siempre juntos 💕",
-                "Iluminas mi mundo 🌼"
+            // Frases exactas estilo neón que se ven flotando en tu captura
+            const textosYFlores = [
+                "Pura luz ✨", "Luz en mi vida", "Sonríe siempre 🌻", "Feliz día", 
+                "Solo para ti 💛", "Flores para ti", "Alegras mi vida", "💐 Ramo Especial",
+                "🌻 Girasol Cósmico", "Pura luz ✨", "Mi amor 💛", "Eres magia",
+                "Un detalle amarillo", "Sonríe siempre 🌻", "Feliz día 🌼"
             ];
 
-            for (let j = 0; j < 25; j++) {
-                setTimeout(() => {
-                    const frase = document.createElement('div');
-                    frase.classList.add('frase-galaxia');
-                    frase.innerText = frasesTiktok[j % frasesTiktok.length];
-                    
-                    const xInicio = Math.random() * 80;
-                    const xFin = xInicio + (Math.random() * 20 - 10);
-                    
-                    frase.style.setProperty('--x-inicio', xInicio + 'vw');
-                    frase.style.setProperty('--x-fin', xFin + 'vw');
-                    frase.style.left = '0';
-                    
-                    // Tamaños de texto adaptables para móviles
-                    frase.style.fontSize = (Math.random() * 5 + 14) + 'px';
-                    frase.style.animationDuration = (Math.random() * 3 + 5) + 's';
+            // Generamos la nube rotativa tridimensional
+            for (let i = 0; i < 45; i++) {
+                const elemento = document.createElement('div');
+                elemento.classList.add('particula-orbita');
+                
+                // Selecciona una frase o emoji del listado
+                elemento.innerText = textosYFlores[i % textosYFlores.length];
+                
+                // Distancia desde el centro (unos más cerca del anillo, otros más lejos)
+                const radioAleatorio = Math.random() * 160 + 130; 
+                elemento.style.setProperty('--radio', radioAleatorio + 'px');
+                
+                // Velocidad de giro desordenada para simular un universo vivo (entre 8 y 18 segundos)
+                const velocidad = Math.random() * 10 + 8;
+                elemento.style.setProperty('--tiempo', velocidad + 's');
+                
+                // Retraso para que no empiecen todos amontonados en el mismo sitio
+                elemento.style.animationDelay = '-' + (Math.random() * velocidad) + 's';
+                
+                // Tamaño de letras variado
+                elemento.style.fontSize = (Math.random() * 4 + 11) + 'px';
 
-                    galaxia.appendChild(frase);
-                }, j * 400); // Aparecen de forma escalonada entre la lluvia cósmica
+                sistema.appendChild(elemento);
             }
         });
     </script>
