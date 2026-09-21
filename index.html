@@ -3,162 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Universo de Flores 3D</title>
+    <title>Galaxia de Flores Amarillas</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
         body {
             margin: 0;
             padding: 0;
-            background-color: #020208;
+            background-color: #030208;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             overflow: hidden;
             font-family: 'Segoe UI', system-ui, sans-serif;
-            perspective: 1000px;
         }
 
-        /* Pantalla 1: La Carta Flotante */
+        /* PANTALLA 1: EL SOBRE PARA HACER CLIC */
         #pantalla-carta {
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             cursor: pointer;
             z-index: 100;
-            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        #pantalla-carta:hover {
-            transform: scale(1.1);
+            width: 100%;
+            height: 100%;
+            position: absolute;
         }
         .sobre {
-            font-size: 140px;
+            font-size: 130px;
             line-height: 1;
-            filter: drop-shadow(0 15px 25px rgba(255, 215, 0, 0.3));
-            animation: flotarCarta 3s infinite ease-in-out;
+            filter: drop-shadow(0 10px 20px rgba(255, 215, 0, 0.4));
+            animation: flotarCarta 2.5s infinite ease-in-out;
+            user-select: none;
         }
         .indicacion {
             margin-top: 25px;
-            font-size: 15px;
+            font-size: 14px;
             color: #fff;
             text-transform: uppercase;
             letter-spacing: 2px;
             font-weight: bold;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(8px);
+            padding: 12px 25px;
             border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 0 20px rgba(255,255,255,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 15px rgba(255,255,255,0.1);
+            user-select: none;
         }
 
-        /* Pantalla 2: El Universo Cósmico */
+        /* PANTALLA 2: LA GALAXIA ESPACIAL (OCULTA) */
         #pantalla-flores {
-            display: none;
+            display: none; /* Se activa con JS */
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at center, #11092c 0%, #03020a 100%);
+            background: radial-gradient(circle at center, #160a3a 0%, #020107 100%);
             overflow: hidden;
             justify-content: center;
             align-items: center;
         }
 
-        /* Fondo de Estrellas */
+        /* Fondo Cósmico de Estrellas */
         .estrellas {
             position: absolute;
             width: 100%;
             height: 100%;
             background-image: 
                 radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
-                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px);
-            background-size: 550px 550px, 350px 350px;
-            background-position: 0 0, 40px 60px;
-            opacity: 0.4;
+                radial-gradient(rgba(255,215,0,.3), rgba(255,215,0,.05) 1px, transparent 30px);
+            background-size: 400px 400px, 250px 250px;
+            opacity: 0.5;
             z-index: 1;
         }
 
-        /* El Anillo de Energía en 3D */
-        .anillo-3d {
+        /* EL SOL/ESFERA DORADA 3D ASCENDENTE */
+        .sol-3d {
             position: absolute;
-            width: 340px;
-            height: 340px;
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle at 35% 35%, #ffffff 0%, #ffea6c 30%, #ffb600 70%, #965300 100%);
             border-radius: 50%;
-            border: 3px dashed #ffcc00;
-            box-shadow: 0 0 50px #ffaa00, inset 0 0 30px #ff3300;
-            filter: blur(1px);
             z-index: 2;
-            transform: rotateX(65deg) rotateY(15deg);
-            animation: rotarAnillo 15s linear infinite;
+            box-shadow: 0 0 60px #ffcc00, 0 0 120px #ff6600, inset -10px -10px 30px rgba(0,0,0,0.5);
+            animation: ascenderSol 2s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
         }
 
-        /* El Núcleo de la Galaxia (Círculo Negro del Video) */
-        .nucleo-galaxia {
+        /* LETRERO DE NEÓN SUPERIOR */
+        .letrero-neon {
             position: absolute;
-            width: 250px;
-            height: 250px;
-            background: #050409;
-            border-radius: 50%;
-            z-index: 5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 0 40px rgba(255, 204, 0, 0.4);
-            border: 2px solid #ffcc00;
-            animation: escalaNucleo 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-        }
-
-        .mensaje-interno {
-            padding: 20px;
-            text-align: center;
-            max-width: 210px;
-        }
-        .mensaje-interno h1 {
+            top: 12%;
             color: #ffffff;
-            font-size: 18px;
-            margin: 0 0 8px 0;
-            text-shadow: 0 0 8px #ffcc00;
-        }
-        .mensaje-interno p {
-            color: #e2d9ff;
-            font-size: 12px;
-            line-height: 1.5;
-            margin: 0;
+            font-size: 24px;
+            font-weight: 900;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 5;
+            text-shadow: 0 0 10px #ffcc00, 0 0 20px #ffaa00, 0 0 40px #ff3300;
+            width: 90%;
+            animation: aparecerTexto 2s ease-out forwards;
         }
 
-        /* Flores que Caen */
-        .elemento-espacial {
+        /* TEXTO DENTRO DEL SOL */
+        .dedicatoria {
+            position: absolute;
+            z-index: 5;
+            text-align: center;
+            max-width: 220px;
+            padding: 10px;
+            pointer-events: none;
+            animation: aparecerTexto 2.5s ease-out forwards;
+        }
+        .dedicatoria p {
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.6;
+            margin: 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+
+        /* LLUVIA DE FLORES Y ELEMENTOS */
+        .flor-girasol {
             position: absolute;
             user-select: none;
             pointer-events: none;
             z-index: 4;
-            animation: lluviaEspacial linear infinite;
-            filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.7));
+            animation: caerFlor linear infinite;
         }
 
-        /* Animaciones */
+        /* ANIMACIONES */
         @keyframes flotarCarta {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-12px); }
+            50% { transform: translateY(-15px); }
         }
-        @keyframes rotarAnillo {
-            from { transform: rotateX(65deg) rotateY(15deg) rotate(0deg); }
-            to { transform: rotateX(65deg) rotateY(15deg) rotate(360deg); }
+        @keyframes ascenderSol {
+            from { transform: translateY(100vh) scale(0.5); opacity: 0; }
+            to { transform: translateY(0) scale(1); opacity: 1; }
         }
-        @keyframes escalaNucleo {
-            from { transform: scale(0); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
+        @keyframes aparecerTexto {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
         }
-        @keyframes lluviaEspacial {
+        @keyframes caerFlor {
             0% {
-                transform: translateY(-10vh) scale(0.5) rotate(0deg);
+                transform: translateY(-50px) rotate(0deg) scale(0.6);
                 opacity: 0;
             }
             10% { opacity: 1; }
             90% { opacity: 1; }
             100% {
-                transform: translateY(110vh) scale(1.3) rotate(360deg);
+                transform: translateY(105vh) rotate(360deg) scale(1.2);
                 opacity: 0;
             }
         }
@@ -166,51 +167,66 @@
 </head>
 <body>
 
-    <!-- PANTALLA 1 -->
-    <div id="pantalla-carta" onclick="abrirCarta()">
+    <!-- PANTALLA 1: DETONADOR DE LA CARTA -->
+    <div id="pantalla-carta">
         <div class="sobre">✉️</div>
         <div class="indicacion">Toca para abrir tu sorpresa ✨</div>
     </div>
 
-    <!-- PANTALLA 2 -->
+    <!-- PANTALLA 2: EFECTO TIKTOK ALEXDEV -->
     <div id="pantalla-flores">
         <div class="estrellas"></div>
-        <div class="anillo-3d"></div>
+        <div class="letrero-neon">Feliz Día de las Flores Amarillas</div>
+        <div class="sol-3d"></div>
         
-        <div class="nucleo-galaxia">
-            <div class="mensaje-interno">
-                <h1>¡Feliz Día! 🌻</h1>
-                <p>Te envío este universo brillante para recordarte lo especial que eres. Que tu vida esté siempre llena de luz y sonrisas. ✨</p>
-            </div>
+        <div class="dedicatoria">
+            <p>Un universo de luz y girasoles para recordarte lo increíble y especial que eres. ¡Nunca dejes de brillar! 🌻✨</p>
         </div>
     </div>
 
     <script>
-        function abrirCarta() {
-            document.getElementById('pantalla-carta').style.display = 'none';
-            const contenedor = document.getElementById('pantalla-flores');
-            contenedor.style.display = 'flex';
+        // Corrección absoluta del evento de clic para móviles
+        const botonCarta = document.getElementById('pantalla-carta');
+        
+        botonCarta.addEventListener('click', function() {
+            // Ocultar pantalla de la carta
+            botonCarta.style.display = 'none';
+            
+            // Mostrar la galaxia de flores
+            const galaxia = document.getElementById('pantalla-flores');
+            galaxia.style.display = 'flex';
 
-            const objetos = ['🌻', '🌼', '✨', '💛', '🌟'];
+            // Emojis temáticos del video
+            const elementos = ['🌻', '🌻', '🌼', '✨', '💛'];
 
-            for (let i = 0; i < 80; i++) {
+            // Crear ráfaga de flores flotantes
+            for (let i = 0; i < 75; i++) {
                 setTimeout(() => {
-                    const el = document.createElement('div');
-                    el.classList.add('elemento-espacial');
-                    el.innerText = objetos[Math.floor(Math.random() * objetos.length)];
+                    const flor = document.createElement('div');
+                    flor.classList.add('flor-girasol');
+                    flor.innerText = elementos[Math.floor(Math.random() * elementos.length)];
                     
-                    el.style.left = Math.random() * 100 + 'vw';
+                    // Posición horizontal aleatoria
+                    flor.style.left = Math.random() * 100 + 'vw';
                     
-                    const tamano = Math.random() * 25 + 15;
-                    el.style.fontSize = tamano + 'px';
+                    // Tamaños dinámicos para simular distancias (Efecto 3D)
+                    const tamano = Math.random() * 26 + 16;
+                    flor.style.fontSize = tamano + 'px';
                     
-                    // CORREGIDO: Añadida la propiedad correcta de tiempo 's'
-                    el.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                    // Velocidades de caída suaves
+                    flor.style.animationDuration = (Math.random() * 4 + 3.5) + 's';
+                    
+                    // Desenfoque sutil en flores lejanas para realismo 3D
+                    if (tamano < 20) {
+                        flor.style.filter = 'blur(1px) drop-shadow(0 0 5px rgba(255,215,0,0.5))';
+                    } else {
+                        flor.style.filter = 'drop-shadow(0 0 8px rgba(255,215,0,0.8))';
+                    }
 
-                    contenedor.appendChild(el);
-                }, i * 100);
+                    galaxia.appendChild(flor);
+                }, i * 110);
             }
-        }
+        });
     </script>
 </body>
 </html>
